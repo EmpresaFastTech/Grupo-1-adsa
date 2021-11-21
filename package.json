@@ -1,0 +1,10 @@
+{
+    "name":"site",
+    "version":"0.0.1",
+    "private":false,
+    "scripts":{
+      "start": "node ./site/bin/www",
+      "postinstall":"cd site && npm install"
+     }
+    
+  }
