@@ -52,5 +52,5 @@ jobs:
         with:
           app-name: 'fasttech'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_0D2330D355C546149D1DA03D09E161F0 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_9254D95181D6446598E0DD2C2613FF92 }}
           package: .
