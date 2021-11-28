@@ -10,8 +10,16 @@ router.post('/autenticar', function(req, res, next) {
 	console.log('Recuperando usuário por login e senha');
 	var login = req.body.username; // depois de .body, use o nome (name) do campo em seu formulário de login
 	var senha = req.body.password; // depois de .body, use o nome (name) do campo em seu formulário de login	
-  var tipo = req.body.tipo;
-	let instrucaoSql = `select * from responsavel where nomeResponsavel='${login}' and senhaResponsavel='${senha}' and tipo='${tipo}'`;
+  	var tipo = req.body.tipo;
+	  let instrucaoSql
+	  if (tipo == 'gestor' || tipo =='suporte'){
+		instrucaoSql = `select * from responsavel where loginResponsavel='${login}' and senhaResponsavel='${senha}' and tipo='${tipo}'`;
+	  }else if (tipo == 'empresa') {
+		instrucaoSql = `select * from empresa where loginEmpresa='${login}' and senhaEmpresa='${senha}'`;
+	  }else if (tipo == 'fastTech') {
+		instrucaoSql = `select * from fastTech where emailFast='${login}' and senhaFast='${senha}'`;
+	  }
+	
 	console.log(instrucaoSql);
 	sequelize.query(instrucaoSql, {
 		model: Usuario
