@@ -714,6 +714,28 @@ li {
 
 
 @media screen and (max-width: 900px) {
+    .mapa .contato-card {
+        width: 390px;
+        height: 156px !important;
+        background: rgba(255, 255, 255, 0.842) !important;
+        padding: 5px 0px;
+        position: absolute;
+        z-index: 99;
+        border-radius: 8px;
+        top: calc(112% - 140px) !important;
+        left: calc(38% - 175px) !important;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        box-shadow: 0 1px 6px 0 rgb(32 33 36 / 28%);
+    }
+    .horizontal2 {
+        
+        flex-direction: column;
+        height: auto;
+        
+    }
     .visao_quadrados ul {
         display: flex;
         flex-flow: column;
@@ -867,4 +889,134 @@ li {
     .contato {
         font-size: 1.2em;
     }
+}
+
+/* mapa------------------------- */
+
+#map {
+    height: 300px;
+    width: 100%;
+    
+}
+
+.mapa {
+    padding: 0px;
+    /* background: #e2eafc; */
+   background-color: tomato;
+    position: relative;
+}
+
+/*fundo da parte de contato*/
+
+.mapa .contato-card {
+    width: 390px;
+    height: 250px;
+    background: white;
+    position: absolute;
+    z-index: 99;
+
+    border-radius: 8px;
+
+    top: calc(50% - 140px);
+    left: calc(20% - 175px);
+
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0 1px 6px 0 rgba(32, 33, 36, .28);
+}
+
+.mapa .contato-card h1 {
+    padding-left: 50px;
+    font-size: 20px;
+    font-family: var(--font-montserrat-corpo);
+    text-align: left;
+    color: #BF8654;
+}
+.contato-card ul{
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+
+}
+.mapa  .contato-card li {
+    font-size: .8rem;
+    font-weight: bold;
+    color: grey;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-montserrat-corpo);
+}
+
+
+.mapa .contato-card li svg {
+    width: 16px;
+    margin: 10px;
+}
+
+
+/*----------------------FOOTER-------------------------------------- */
+.footer {
+    display: flex;
+    justify-content: center;
+    padding-top: 29px;
+   
+}
+
+ .line {
+    height: 3px;
+    width: 100%;
+    background: radial-gradient(50% 11013689.76% at 50% 0%, #0D0D0D 0%, #EFC0C0 100%);
+    opacity: 0.1;
+    border-radius: 49px;
+    margin-bottom: 36px;
+} 
+
+.footer .horizontal {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.footer .horizontal div {
+    min-width: 241px;
+}
+
+.esquerda {
+    display: flex;
+    float: left;
+}
+
+.icon {
+    height: 60px;
+    width: 60px;
+    display: flex;
+    padding: 10px;
+}
+
+.horizontal2{
+    width: 100%;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+    height: 130px;
+    padding-bottom: 10px;
+}
+.horizontal2 div{
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+}
+.horizontal2 p {
+    margin: 0px 10px;
+
+}
+.horizontal2 p a{
+    color:  #333 !important;
+    font-weight: bold;
 }
