@@ -2,7 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
 
 :root {
-  --primary-azul: #2c82b9;
+  --primary-azul: #6b3cc9;
   --cor-preto: #000;
   --font-lato-corpo: "Lato", sans-serif;
 }
@@ -18,9 +18,8 @@
 body {
   background-image: url(../img/fundoListaFuncList.png);
   background-repeat: no-repeat;
-  background-position: right;
-  background-size: 500px;
-  background-position-y: 500%;
+  background-size: 600px;
+  background-position-y: 20vh ;
 }
 
 a {
@@ -35,61 +34,171 @@ a {
   height: 80px;
   width: 80%;
   margin: auto;
+  display: flex;
+  flex-flow: row;
+  align-self: center;
+  justify-content: space-between;
+  padding: 0 !important;
+}
+
+.header .container div{
+  display: flex;
+  align-items: center;
 }
 
 .header h1 {
   margin: 0;
   padding: 0;
-  float: left;
-  margin-top: 30px;
-  margin-left: 2px;
-  float: left;
-  width: 80%;
+  display: flex;
+  align-items: center;
 }
 
 .header img {
   margin: 0;
   padding: 0;
-  float: left;
-  margin-top: 30px;
   height: 40px;
-  float: left;
+
 }
 
 .header a {
   margin: 0;
   padding: 0;
-  margin-top: 30px;
-  margin-left: 2px;
   width: 20px;
+  display: flex;
+    align-items: center;
 }
 
-.header span {
-  padding-left: 25%;
+.header  span {  
   color: var(--primary-azul);
   font-size: 2.5rem;
   text-align: center;
+  display: flex;
+  font-weight: bold;
+  align-items: center;
 }
 
-.estiloForm {
+.banner {
+  width: 100%;
+  justify-content: center;
+  display: flex;
+  padding-left: 20vh;
+}
+
+main h3 {
+  font-weight: 600;
+  margin-bottom: 1rem;
+  position: relative;
+  margin-left: 7px;
+  margin-top: 7px;
+}
+
+main h3::before {
+  content: "";
+  position: absolute;
+  height: 2px;
+  width: 70px;
+  bottom: 0;
+  left: 5;
+  border-radius: 8px;
+  background: rgb(44, 130, 185);
+  background: linear-gradient(45deg, #983ee7, #4a00e0);
+}
+
+.containerList {
+  margin-top: 3vh;
+  display: flex;
+  width: 83vh;
+  height: 62vh;
+}
+
+.containerList ul {
+  min-width: 78vh;
+  height: 65vh;
+  padding: 0 1rem 1rem 0;
+  overflow: hidden;
+  overflow-y: scroll;
+  border: solid 1px rgb(192, 192, 192);
+  background-color: rgba(255, 255, 255, 0.87);
+}
+  
+.containerList ul::-webkit-scrollbar {
+  width: 8px;
+}
+
+.containerList ul::-webkit-scrollbar-thumb {
+  border: solid 1px rgb(226, 226, 226);
+  background: #e6e6e6de;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+.containerList ul::-webkit-scrollbar-track {
+  cursor: pointer;
+}
+
+.containerList li {
+  list-style-type: none;
+  background-color: #fdfdfdde;
+  height: 12vh;
+  margin-bottom: 10px;
+  margin-left: 5px;
+  border: solid 1px rgb(189, 189, 189);
+}
+
+.menu {
+  margin-top: 5px;
+  margin-left: 60px;
+  float: left;
+}
+
+.containerList img {
+  padding: 0;
+  height: 35px;
+  float: left;
+  cursor: pointer;
+}
+
+.containerList button {
+  margin-top: 67vh;
+  margin-left: 48vh;
+  position: fixed;
+  cursor: pointer;
+  width: 13%;
+  height: 35px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(45deg, #9c47e7, #6527e0);
+  color: white;
+  font-size: 1.1rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.containerList button:hover {
+  height: 36px;
+  letter-spacing: 0.2px;
+  background: linear-gradient(45deg, #6527e0, #9c47e7 );
+}
+
+.containerList button img {
+  height:65%;
+  position: absolute;
+  margin-left: 5px;
+}
+
+.lado {
+  float: left;
+}
+
+h4 {
   padding-top: 10px;
 }
 
-.container {
-  width: 100% !important;
-  height: 90px;
-  position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-left: 134px;
-  padding-top: 30px;
-  padding-right: 240px;
-}
-
-
-.titulo {
-  align-self: flex-end !important;
+h4 span {
+  padding-left: 40px;
+  padding-right: 40px;
+  margin-bottom: 20px;
 }
 
 .tituloFast {
@@ -97,14 +206,17 @@ a {
   font-weight: bold;
 }
 
-.container img {
-  height: 32px;
+main {
+  width: 100%;
+  justify-content: center;
+  display: flex;
+  padding-left: 6%;
 }
 
 main form {
-  display: flex;
-  flex-direction: column;
   align-items: center;
+  width: 40%;
+  height: 70vh;
 }
 
 main form label {
@@ -133,12 +245,7 @@ main h3::before {
   bottom: 0;
   left: 3;
   border-radius: 8px;
-  background: rgb(44, 130, 185);
-  background: linear-gradient(
-    90deg,
-    rgba(44, 130, 185, 1) 0%,
-    rgba(123, 187, 228, 1) 100%
-  );
+  background: linear-gradient( 45deg, #6527e0, #9c47e7 );
 }
 
 button img {
@@ -179,13 +286,8 @@ button img {
   height: 2px;
   width: 100%;
   left: 0;
-  background: linear-gradient(
-    90deg,
-    rgba(44, 130, 185, 1) 0%,
-    rgb(103, 162, 202) 40%,
-    rgb(97, 149, 184) 60%,
-    rgba(44, 130, 185, 1) 100%
-  );
+  background: linear-gradient(90deg, rgba(107,60,201,1) 0%, 
+  rgba(172,141,235,1) 38%, rgb(158, 127, 221) 62%, rgba(107,60,201,1) 100%);
   transform: scaleX(0);
   transition: all 0.3s ease-in-out;
 }
@@ -203,6 +305,19 @@ button img {
   width: 35%;
 }
 
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 100%;
+  margin-bottom: 1rem;
+  font-size: 16px;
+  height: 29px;
+  outline: none;
+  border: 1px solid rgb(226, 226, 226);
+  appearance: none;
+  background: url(../img/seta-para-baixo.png) 96% / 3% no-repeat ;
+}
+
 .voltar {
   width: 40px;
   position: absolute;
@@ -216,14 +331,14 @@ main form button {
   cursor: pointer;
   width: 25%;
   height: 40px;
-  margin-top: 1rem;
   border: none;
   border-radius: 12px;
-  background: linear-gradient(to right, #5c86e7, #014f86);
+  background: linear-gradient( 45deg, #6527e0, #9c47e7 );
   color: white;
   font-size: 1.1rem;
   transition: all 0.2s ease-in-out;
-  margin-left: 41vh;
+  margin-left: 54vh;
+  margin-top: 4vh;
   border: none;
 }
 
@@ -231,12 +346,16 @@ main form button:hover {
   width: 26%;
   height: 41px;
   letter-spacing: 0.2px;
-  background: linear-gradient(#5e89ee, #023b64);
+  background: linear-gradient(#9c47e7, #6527e0);
 }
+
 .cadastrar:hover {
   width: 36%;
 }
+
 .formAcess {
+  height: 63vh;
+  width: 100%;
   opacity: 1;
   pointer-events: auto;
   animation-name: slideRight;
@@ -246,6 +365,7 @@ main form button:hover {
   animation-timing-function: ease-in-out;
   -webkit-animation-timing-function: ease-in-out;
   visibility: visible !important;
+  background-color: rgba(255, 255, 255, 0.918);
 }
 
 @keyframes slideRight {

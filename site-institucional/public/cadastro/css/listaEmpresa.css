@@ -71,6 +71,7 @@ a {
   text-align: center;
   display: flex;
   align-items: center;
+  font-weight: bold;
 }
 
 main{
@@ -146,11 +147,10 @@ h4 span {
 }
 
 .containerList button {
-  margin-top: 67vh;
   margin-left: 55vh;
-  position: fixed;
+  margin-top: 2vh;
   cursor: pointer;
-  width: 10%;
+  width: 32%;
   height: 35px;
   border: none;
   border-radius: 12px;
@@ -158,18 +158,16 @@ h4 span {
   color: white;
   font-size: 1.1rem;
   transition: all 0.2s ease-in-out;
-  margin-left: 60vh;
-  border: none;
 }
 
 .containerList button:hover {
   height: 36px;
   letter-spacing: 0.2px;
-  background: linear-gradient(to right, #014f86, #5c86e7,);
+  background: linear-gradient(45deg, #014f86, #5c86e7 );
 }
 
 .containerList button img {
-  height: 65%;
+  height:5%;
   position: absolute;
   margin-left: 5px;
 }
