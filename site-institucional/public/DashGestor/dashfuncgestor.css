@@ -81,7 +81,7 @@
 .ballom ul li{
  background-color: rgba(128, 0, 128, 0.082);
  width: 130px;
- padding-left: 30px;
+ 
 }
 
 .grafico1{
@@ -193,4 +193,12 @@ body{
 .cabecalho h1{
   font-size: 16px;
   width: 350px;
+}
+
+.especial{
+  width: 294px !important;
+  background-color: red !important;
+}
+#emailv{
+  width: 100% !important;
 }

@@ -9,6 +9,8 @@ var indexRouter = require('./routes/index');
 var usuariosRouter = require('./routes/usuarios');
 var leiturasRouter = require('./routes/leituras');
 var publicacoesRouter = require('./routes/publicacoes');
+var publicacoesRouterSup = require('./routes/publicacoesSup');
+var publicacoesRouterSupLeitura = require('./routes/publicacoesSupLeitura');
 const enviaEmail = require('./routes/email');
 
 var app = express();
@@ -23,5 +25,7 @@ app.use('/', indexRouter);
 app.use('/usuarios', usuariosRouter);
 app.use('/leituras', leiturasRouter);
 app.use('/publicacoes', publicacoesRouter);
+app.use('/publicacoesSup', publicacoesRouterSup);
+app.use('/publicacoesSupLeitura', publicacoesRouterSupLeitura);
 app.use('/email', enviaEmail);
 module.exports = app;

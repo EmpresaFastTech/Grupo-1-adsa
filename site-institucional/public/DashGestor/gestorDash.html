@@ -30,11 +30,10 @@
                         </ul>
                     </li>
                     <li><a href="#">Ajuda</a></li>
-                    <li><a href="../index.html">Sair</a></li>
+                    <li><a href="/login.html">Sair</a></li>
                 </ul>
             </nav>
         </div>
-        
         <section class="containerInfo">
             <div class="cabecalho">
                 <a class="mphone" href="#">
@@ -74,7 +73,7 @@
                         </li>
 
                         <li>
-                            <p>Pendentes</p>
+                            <p>Avaliar</p>
                             <div><img src="./img/crooshair.svg" alt="">
                             </div>
                         </li>
@@ -89,11 +88,27 @@
 </body>
 
 </html>
+<script src="../DashSup/tempo.js"></script>
+<script>
+    console.log(moment().format('lll'));
+</script>
 <script>
     function criarContainers(dados) {
         const container = document.querySelector(".containerInfoBalao")
         const conteudo = document.createElement("div");
+        let maiorValor = 0;
+        let contadorFunc = 0;
+        let registro = Array.from(dados);
+        let advAtual = [];
         dados.map((dado) => {
+            let adv, dataDado, dataAno;
+            if (dado.statusEquip) {
+                if (dado.statusEquip == "Grave") adv = "Alerta"
+                else if (dado.statusEquip == "Pendente") adv = "Pendente"
+                else adv = "Ativo";
+            }
+
+
             container.innerHTML += `
       <div class="infoBalao">
                   <div class="perfilFunc">
@@ -101,19 +116,23 @@
                       <img src="./img/warn.png" alt="">
                   </div>
                   <div class="perfilM">
-                      <h2>Máquina</h2>
-                      <h2>012190</h2>
+                      
                   </div>
-                  <h2 class="status">Status: <span class="ruim">Alerta</span></h2>
+                  <h2 class="status">StatusEquip: <span class="ruim">${adv}</span></h2>
 
                   <div class="perfilS">
-                      <p>Email: ${dado.email}</p>
+                   
+                      <p>Email:</p>
+                      ${dado.email}
                       <p>Telefone: ${dado.telefone}</p>
-                      <p>Id: ${dado.idFuncionario}</p>
+                      <p> </p>
+                      <p class='identificador'>Id: ${dado.idFuncionario}</p>
                   </div>
                   <a href="./gestor2Dash.html">Mais informações</a>
               </div>
       `;
+
+
 
         });
     };
@@ -124,13 +143,32 @@
         criarContainers(dados);
     }
 
+    /* CRIAR BALOES */
+    function CriarBaloesPorUsuario(idUsuario) {
+        fetch(`/publicacoes/balao/${idUsuario}`)
+            .then(resposta => {
+                if (resposta.ok) {
+                    resposta.json().then(function (resposta) {
+                        dadosFunc(resposta);
+                        console.log("res", resposta)
+                        // alert(JSON.stringify(resposta))
+                    });
+                } else {
+                    console.error('Nenhum dado encontrado ou erro na API');
+                }
+            })
+            .catch(function (error) {
+                console.error(`Erro na obtenção das publicações do usuário: ${error.message}`);
+            });
+    }
+
     function obterPublicacoesPorUsuario(idUsuario) {
         fetch(`/publicacoes/${idUsuario}`)
             .then(resposta => {
                 if (resposta.ok) {
                     resposta.json().then(function (resposta) {
                         dadosFunc(resposta);
-                        console.log(resposta);
+                        console.log("res", resposta)
                         // alert(JSON.stringify(resposta))
                     });
                 } else {
