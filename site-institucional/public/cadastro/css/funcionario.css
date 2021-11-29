@@ -158,6 +158,7 @@ main h3::before {
   height: 35px;
   float: left;
   cursor: pointer;
+  margin-left: 30%;
 }
 
 .containerList button {
