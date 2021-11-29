@@ -4,6 +4,6 @@
   "private": true,
   "scripts": {
     "start": "node ./logins/bin/www",
-    "postinstall": "cd site-institucional && npm install"
+    "postinstall": "cd logins && npm install"
   }
 }
