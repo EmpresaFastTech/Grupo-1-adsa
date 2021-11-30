@@ -11,6 +11,7 @@ var leiturasRouter = require('./routes/leituras');
 var publicacoesRouter = require('./routes/publicacoes');
 var publicacoesRouterSup = require('./routes/publicacoesSup');
 var publicacoesRouterSupLeitura = require('./routes/publicacoesSupLeitura');
+var gestor = require('./routes/gestor');
 const enviaEmail = require('./routes/email');
 
 var app = express();
@@ -27,5 +28,6 @@ app.use('/leituras', leiturasRouter);
 app.use('/publicacoes', publicacoesRouter);
 app.use('/publicacoesSup', publicacoesRouterSup);
 app.use('/publicacoesSupLeitura', publicacoesRouterSupLeitura);
+app.use('/gestor', gestor);
 app.use('/email', enviaEmail);
 module.exports = app;
