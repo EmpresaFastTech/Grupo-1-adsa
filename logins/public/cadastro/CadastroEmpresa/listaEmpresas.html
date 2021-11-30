@@ -99,6 +99,7 @@
   function linkarEmpresa(event) {
     event.preventDefault();
     const dado = data[0][+event.target.alt];
+    sessionStorage.setItem('idEmpresa', dado.idEmpresa);
     sessionStorage.setItem('CNPJ', dado.CNPJ);
     sessionStorage.setItem('bairro', dado.bairro);
     sessionStorage.setItem('cep', dado.cep);

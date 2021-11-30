@@ -6,16 +6,26 @@ var Empresa = require('../models').Empresa;
 
 router.post('/update', function(req, res, next) {
 
-	var login = req.body.username; // depois de .body, use o nome (name) do campo em seu formulário de login
-	var senha = req.body.password; // depois de .body, use o nome (name) do campo em seu formulário de login	
-  	var tipo = req.body.tipo;
-	let instrucaoSql
+	var idEmpresa = req.body.idEmpresa; 
+	var nomeEmpresa = req.body.nomeEmpresa; 	
+	var CNPJ= req.body.CNPJ; 	
+	var cep = req.body.cep; 	
+	var bairro = req.body.bairro; 	
+	var logradouro = req.body.logradouro; 	
+  	var cidade = req.body.cidade;
+  	var numero = req.body.numero;
+  	var complemento = req.body.complemento;
+  	var loginEmpresa = req.body.loginEmpresa;
+  	var senhaEmpresa = req.body.senhaEmpresa;
+  	var telefone = req.body.telefone;
+  	var email = req.body.email;
+	let instrucaoSql;
 	 
-	instrucaoSql = `update [dbo].[Empresa] set loginEmpresa = 'Jaspion',senhaEmpresa='123',nomeEmpresa='Jaspion',CNPJ='12345678912345',telefone='2345678901',email='Jaspion@gmail.com',logradouro='Rua Haddock Lobo',cidade='São Paulo',numero=1,complemento='',cep='09730580',bairro='Consolação' where idEmpresa = 2'`;
+	instrucaoSql = `update [dbo].[Empresa] set loginEmpresa = '${loginEmpresa}',senhaEmpresa='${senhaEmpresa}',nomeEmpresa='${nomeEmpresa}',CNPJ='${CNPJ}',telefone='${telefone}',email='${email}',logradouro='${logradouro}',cidade='${cidade}',numero=${+(numero)},complemento='${complemento}',cep='${cep}',bairro='${bairro}' where idEmpresa = ${+(idEmpresa)}`;
 	
 	console.log(instrucaoSql);
 	sequelize.query(instrucaoSql, {
-		model: Usuario
+		model: Empresa
 	}).then(resultado => {
 		console.log(`Encontrados: ${resultado.length}`);
 		if (resultado.length == 1) {

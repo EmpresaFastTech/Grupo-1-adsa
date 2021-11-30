@@ -22,8 +22,8 @@
   </div>
 
   <div class="box-Form">
-    <form action="" class="main-container" id="formulario_login">
-      <input style="opacity: 0; position: absolute;" name="idEmpresa" type="text" value="1">
+    <form class="main-container" id="formulario_login" method="post" onsubmit="return updateTabela()">
+      <input style="position: absolute; opacity: 0;" name="idEmpresa" type="text">
       <div class="container">
         <h3>Dados da empresa:</h3>
         <label for="name" class="input-fild">
@@ -98,41 +98,45 @@
           <label for="name" class="input-fild">
             <span>Email:</span>
             <input type="text" id="email" name="email" placeholder="Digite o número" />
+
             <div class="underline"></div>
           </label>
         </div>
+        <input type="submit" value="Atualizar">
 
-        <div class="botnsFuncoes">
-          <a href="listaEmpresas.html">
-            <img src="../img/voltarAzul.png" alt="" class="voltar" onclick="voltarLista()" id="voltarLista" />
-          </a>
-          <a href="cadastro.html">
-            <img src="../img/iconMaisEscuro.png" alt="" />
-          </a>
-          <span>Novo</span>
-          <a href="cadastro.html">
-            <img src="../img/salvarEscuro.png" alt="" />
-          </a>
-          <span>Salvar</span>
-          <a href="listaEmpresas.html">
-            <img src="../img/cancelar.png" alt="" />
-          </a>
-          <span>Cancelar</span> <img src="../img/excluir.png" alt="" />
-          <span>Excluir</span>
-        </div>
       </div>
     </form>
   </div>
 </body>
 <script>
-  /*   function updateTabela() {
-      var formulario = new URLSearchParams(new FormData(formulario_login));
-  
-    }
-  
-    updateTabela() */
+  function updateTabela() {
+    var formulario = new URLSearchParams(new FormData(formulario_login));
+    console.log(formulario.toString());
+    console.log(formulario);
+    fetch("/gestor/update", {
+      method: "POST",
+      body: formulario,
+    }).then((resposta) => {
+      if (resposta.ok) {
+        resposta.json().then((json) => {
+          console.log(json)
+        });
+      } else {
+        alert("[UPDATE] : Dados Atulizados !");
+
+        resposta.text().then((texto) => {
+
+        });
+      }
+    });
+    return false;
+
+  }
+
+
   function preencher() {
     const formulario = document.forms.formulario_login;
+    formulario.idEmpresa.value = sessionStorage.getItem('idEmpresa');
     formulario.nomeEmpresa.value = sessionStorage.getItem('nomeEmpresa');
     formulario.CNPJ.value = sessionStorage.getItem('CNPJ');
     formulario.cep.value = sessionStorage.getItem('cep');
@@ -146,6 +150,7 @@
     formulario.email.value = sessionStorage.getItem('email');
     formulario.senhaEmpresa.value = sessionStorage.getItem('senhaEmpresa');
   }
+
   preencher();
 </script>
 
