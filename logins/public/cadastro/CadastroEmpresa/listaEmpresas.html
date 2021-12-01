@@ -26,7 +26,6 @@
   <main>
     <div class="containerList">
       <ul class="lista">
-
         <!--  <li>
           <h4 class="lado">
             <span>Id: </span> <span>Nome: </span> <span>CNPJ: </span>
@@ -37,51 +36,7 @@
           <h4>
             <span>10</span> <span>SOS a</span> <span>07.165.496/0001-00</span>
           </h4>
-        </li>
-        <li>
-          <h4 class="lado">
-            <span>Id: </span> <span>Nome: </span> <span>CNPJ: </span>
-          </h4>
-          <span class="menu">
-            <a href="editar.html"><img src="../img/iconEditar.png" alt="" /></a>
-          </span>
-          <h4>
-            <span>10</span> <span>SOS a</span> <span>07.165.496/0001-00</span>
-          </h4>
-        </li>
-        <li>
-          <h4 class="lado">
-            <span>Id: </span> <span>Nome: </span> <span>CNPJ: </span>
-          </h4>
-          <span class="menu">
-            <a href="editar.html"><img src="../img/iconEditar.png" alt="" /></a>
-          </span>
-          <h4>
-            <span>10</span> <span>SOS a</span> <span>07.165.496/0001-00</span>
-          </h4>
-        </li>
-        <li>
-          <h4 class="lado">
-            <span>Id: </span> <span>Nome: </span> <span>CNPJ: </span>
-          </h4>
-          <span class="menu">
-            <a href="editar.html"><img src="../img/iconEditar.png" alt="" /></a>
-          </span>
-          <h4>
-            <span>10</span> <span>SOS a</span> <span>07.165.496/0001-00</span>
-          </h4>
-        </li>
-        <li>
-          <h4 class="lado">
-            <span>Id: </span> <span>Nome: </span> <span>CNPJ: </span>
-          </h4>
-          <span class="menu">
-            <a href="editar.html"><img src="../img/iconEditar.png" alt="" /></a>
-          </span>
-          <h4>
-            <span>10</span> <span>SOS a</span> <span>07.165.496/0001-00</span>
-          </h4>
-        </li> -->
+        </li>  -->
       </ul>
 
       <button onclick="location.href = './cadastro.html';">
@@ -130,7 +85,10 @@
             <span>Id: </span> <span>Nome: </span> <span>CNPJ: </span>
           </h4>
           <span class="menu">
-            <a class="linkmp"  onclick="linkarEmpresa(event)" href="./editar.html" ><span class="idemp" style="opacity: 0; position: absolute;">${contador}</span><img src="../img/iconEditar.png" alt="${contador}" /></a>
+            <a class="linkmp"  onclick="linkarEmpresa(event)" href="./editar.html" >
+              <span class="idemp" style="opacity: 0; position: absolute;">${contador}
+              </span><img src="../img/iconEditar.png" alt="${contador}" />
+            </a>
           </span>
           <h4>
             <span>${d.idEmpresa}</span> <span>${d.nomeEmpresa}</span> <span>${d.CNPJ}</span>

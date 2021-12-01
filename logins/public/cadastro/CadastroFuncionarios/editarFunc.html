@@ -1,189 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cadastro</title>
-    <link rel="stylesheet" href="../css/listaEmpresa.css" />
-  </head>
 
-  <body>
-    <div class="header">
-      <div class="container">
-        <div>
-          <img src="../img/iconPreto.png" alt="" />
-          <h1 class="titulo">FastTec</h1>
-        </div>
-        <span class="highlight"> Editar funcionário cadastrado</span>
-        <a>Logout</a>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cadastro</title>
+  <link rel="stylesheet" href="../css/editarFunc.css" />
+</head>
+
+<body>
+  <div class="header">
+    <div class="container">
+      <div>
+        <img src="../img/iconPreto.png" alt="" />
+        <h1 class="titulo">FastTec</h1>
       </div>
+      <span class="highlight"> Editar funcionário cadastrado</span>
+      <a href="listaFuncionarios.html"> <img src="../img/voltarRoxo.png" alt=""></a>
     </div>
+  </div>
 
-    <div class="box-Form">
-      <form action="" class="main-container">
-        <div class="container">
-          <h3>Dados da empresa:</h3>
-          <label for="name" class="input-fild">
-            <span>Name:</span>
-            <input
-              type="text"
-              id="nomeEmpresa"
-              name="nomeEmpresa"
-              class="input-padrao"
-              placeholder="Nome e sobrenome"
-              required
-              minlength="4"
-              autofocus="autofocus"
-            />
-            <div class="underline"></div>
-          </label>
-          <label for="name" class="input-fild">
-            <span>CNPJ:</span>
-            <input
-              type="text"
-              id="cnpj"
-              name="cnpj"
-              placeholder="Digite o cnpj"
-            />
-            <div class="underline"></div>
-          </label>
-          <label for="name" class="input-fild">
-            <span>CEP:</span>
-            <input type="text" id="cep" name="cep" placeholder="Digite o cep" />
-            <div class="underline"></div>
-          </label>
-          <label for="name" class="input-fild">
-            <span>Bairro:</span>
-            <input
-              type="text"
-              id="bairro"
-              name="bairro"
-              placeholder="Digite o bairro"
-            />
-            <div class="underline"></div>
-          </label>
-          <label for="name" class="input-fild">
-            <span>Logradouro:</span>
-            <input
-              type="text"
-              id="logradouro"
-              name="logradouro"
-              placeholder="Digite o logradouro"
-            />
-            <div class="underline"></div>
-          </label>
-          <label for="name" class="input-fild">
-            <span>Cidade:</span>
-            <input
-              type="text"
-              id="cidade"
-              name="cidade"
-              placeholder="Digite o cidade"
-            />
-            <div class="underline"></div>
-          </label>
-          <label for="name" class="input-fild">
-            <span>Número:</span>
-            <input
-              type="text"
-              id="numero"
-              name="numero"
-              placeholder="Digite o número"
-            />
-            <div class="underline"></div>
-          </label>
-          <label for="name" class="input-fild">
-            <span>Complemento:</span>
-            <input
-              type="text"
-              id="complemento"
-              name="complemento"
-              placeholder="Digite complemento"
-            />
-            <div class="underline"></div>
-          </label>
-        </div>
+  <main>
+    <form id="form_cadastro" method="post" onsubmit="return cadastrar()">
 
-        <div class="">
-          <div class="forms-container">
-            <h3>Dados da de acesso:</h3>
-            <label for="name" class="input-fild">
-              <span>Login:</span>
-              <input
-                type="text"
-                id="loginEmpresa"
-                name="loginEmpresa"
-                placeholder="Digite o bairro"
-              />
-              <div class="underline"></div>
-            </label>
-            <label for="name" class="input-fild">
-              <span>Senha:</span>
-              <input
-                type="text"
-                id="senhaEmpresa"
-                name="senhaEmpresa"
-                placeholder="Digite o logradouro"
-              />
-              <div class="underline"></div>
-            </label>
-            <label for="name" class="input-fild">
-              <span>Confirmar senha:</span>
-              <input
-                type="text"
-                id="confiSenha"
-                name="confiSenha"
-                placeholder="Digite o cidade"
-              />
-              <div class="underline"></div>
-            </label>
-          </div>
+      <div id="dadosEmpresa" class="formAcess">
+        <h3>Dados funcionários:</h3>
+        <div class="espaco"></div>
+        <select id="tipo" class="select" name="tipo">
+          <option value="">Escolha funcionário</option>
+          <option value="empresa">Gestor</option>
+          <option value="fastTech">Suporte</option>
+        </select>
+        <label class="input-fild">
+          <span>Name:</span>
+          <input type="text" id="nomeEmpresa" name="nomeEmpresa" class="input-padrao" placeholder="Nome e sobrenome"
+            required minlength="4" autofocus="autofocus">
+          <div class="underline"></div>
+        </label>
+        <label class="input-fild">
+          <span>Telefone:</span>
+          <input type="text" id="nomeEmpresa" name="nomeEmpresa" class="input-padrao" placeholder="Nome e sobrenome"
+            required minlength="4" autofocus="autofocus">
+          <div class="underline"></div>
+        </label>
+        <label class="input-fild">
+          <span>CPF:</span>
+          <input type="text" id="cnpj" name="cnpj" placeholder="Digite o cnpj">
+          <div class="underline"></div>
+        </label>
+        <label class="input-fild">
+          <span>E-mail:</span>
+          <input type="text" id="bairro" name="bairro" placeholder="Digite o bairro">
+          <div class="underline"></div>
+        </label>
+        <label class="input-fild">
+          <span>Senha:</span>
+          <input type="text" id="logradouro" name="logradouro" placeholder="Digite o logradouro">
+          <div class="underline"></div>
+        </label>
+    </form>
 
-          <div class="forms-container">
-            <h3>Dados para contato:</h3>
-            <label for="name" class="input-fild">
-              <span>Telefone:</span>
-              <input
-                type="text"
-                id="telefone"
-                name="telefone"
-                placeholder="Digite o número"
-              />
-              <div class="underline"></div>
-            </label>
-            <label for="name" class="input-fild">
-              <span>Email:</span>
-              <input
-                type="text"
-                id="email"
-                name="email"
-                placeholder="Digite o número"
-              />
-              <div class="underline"></div>
-            </label>
-          </div>
+    <div class="botnsFuncoes">
+      <input type="submit" value="Atualizar">
+      <a href="cadastro.html">
+        <img src="../img/iconMaisEscuro.png" alt="" />
+      </a>
+      <span>Novo</span>
+      <a href="cadastro.html">
+        <img src="../img/salvarEscuro.png" alt="" />
+      </a>
 
-          <div class="botnsFuncoes">
-            <a href="listaEmpresas.html">
-                <img src="../img/voltarAzul.png"alt=""class="voltar"onclick="voltarLista()"id="voltarLista"/>
-            </a>
-            <a href="cadastro.html">
-              <img src="../img/iconMaisEscuro.png" alt="" />
-            </a>
-            <span>Novo</span>
-            <a href="cadastro.html">
-              <img src="../img/salvarEscuro.png" alt="" />
-            </a>
-            <span>Salvar</span>
-            <a href="listaEmpresas.html">
-              <img src="../img/cancelar.png" alt="" />
-            </a>
-            <span>Cancelar</span> <img src="../img/excluir.png" alt="" />
-            <span>Excluir</span>
-          </div>
-        </div>
-      </form>
+      <span>Salvar</span>
+      <a href="listaEmpresas.html">
+        <img src="../img/cancelar.png" alt="" />
+      </a>
+      <span>Cancelar</span>
     </div>
-  </body>
+  </main>
+
+</body>
+
 </html>

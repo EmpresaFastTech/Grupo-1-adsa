@@ -17,18 +17,21 @@
         <h1 class="titulo">FastTec</h1>
       </div>
       <span class="highlight"> Empresas cadastradas</span>
-      <a>Logout</a>
+      <a href="listaEmpresas.html">
+        <img src="../img/voltarAzul.png" alt="" class="voltar" onclick="voltarLista()" id="voltarLista" />
+      </a>
     </div>
   </div>
 
   <div class="box-Form">
     <form class="main-container" id="formulario_login" method="post" onsubmit="return updateTabela()">
-      <input style="position: absolute; opacity: 0;" name="idEmpresa" type="text">
+      <input style="position: absolute; opacity: 0" name="idEmpresa" type="text" />
       <div class="container">
         <h3>Dados da empresa:</h3>
         <label for="name" class="input-fild">
           <span>Name:</span>
-          <input type="text" id="nomeEmpresa" name="nomeEmpresa" class="input-padrao" placeholder="Nome e sobrenome" required minlength="4" autofocus="autofocus" />
+          <input type="text" id="nomeEmpresa" name="nomeEmpresa" class="input-padrao" placeholder="Nome e sobrenome"
+            required minlength="4" autofocus="autofocus" />
           <div class="underline"></div>
         </label>
         <label for="name" class="input-fild">
@@ -102,8 +105,23 @@
             <div class="underline"></div>
           </label>
         </div>
-        <input type="submit" value="Atualizar">
 
+        <div class="botnsFuncoes">
+          <a href="cadastro.html">
+            <img src="../img/salvarEscuro.png" alt="" />
+          </a>
+          <span>Salvar</span>
+          <input type="submit" value="Atualizar" />
+          <a href="cadastro.html">
+            <img src="../img/iconMaisEscuro.png" alt="" />
+          </a>
+          <span>Novo</span>
+
+          <a href="listaEmpresas.html">
+            <img src="../img/cancelar.png" alt="" />
+          </a>
+          <span>Cancelar</span>
+        </div>
       </div>
     </form>
   </div>
@@ -119,36 +137,32 @@
     }).then((resposta) => {
       if (resposta.ok) {
         resposta.json().then((json) => {
-          console.log(json)
+          console.log(json);
         });
       } else {
         alert("[UPDATE] : Dados Atulizados !");
 
-        resposta.text().then((texto) => {
-
-        });
+        resposta.text().then((texto) => {});
       }
     });
     return false;
-
   }
-
 
   function preencher() {
     const formulario = document.forms.formulario_login;
-    formulario.idEmpresa.value = sessionStorage.getItem('idEmpresa');
-    formulario.nomeEmpresa.value = sessionStorage.getItem('nomeEmpresa');
-    formulario.CNPJ.value = sessionStorage.getItem('CNPJ');
-    formulario.cep.value = sessionStorage.getItem('cep');
-    formulario.bairro.value = sessionStorage.getItem('bairro');
-    formulario.logradouro.value = sessionStorage.getItem('logradouro');
-    formulario.cidade.value = sessionStorage.getItem('cidade');
-    formulario.numero.value = sessionStorage.getItem('numero');
-    formulario.complemento.value = sessionStorage.getItem('complemento');
-    formulario.loginEmpresa.value = sessionStorage.getItem('loginEmpresa');
-    formulario.telefone.value = sessionStorage.getItem('telefone');
-    formulario.email.value = sessionStorage.getItem('email');
-    formulario.senhaEmpresa.value = sessionStorage.getItem('senhaEmpresa');
+    formulario.idEmpresa.value = sessionStorage.getItem("idEmpresa");
+    formulario.nomeEmpresa.value = sessionStorage.getItem("nomeEmpresa");
+    formulario.CNPJ.value = sessionStorage.getItem("CNPJ");
+    formulario.cep.value = sessionStorage.getItem("cep");
+    formulario.bairro.value = sessionStorage.getItem("bairro");
+    formulario.logradouro.value = sessionStorage.getItem("logradouro");
+    formulario.cidade.value = sessionStorage.getItem("cidade");
+    formulario.numero.value = sessionStorage.getItem("numero");
+    formulario.complemento.value = sessionStorage.getItem("complemento");
+    formulario.loginEmpresa.value = sessionStorage.getItem("loginEmpresa");
+    formulario.telefone.value = sessionStorage.getItem("telefone");
+    formulario.email.value = sessionStorage.getItem("email");
+    formulario.senhaEmpresa.value = sessionStorage.getItem("senhaEmpresa");
   }
 
   preencher();

@@ -1,69 +1,54 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="phone.png" />
-    <link rel="shortcut icon" href="./DashGestor/img/" type="image/x-icon" />
-    <title>Login</title>
-    <link rel="stylesheet" href="css/login.css" />
-    <script src="https://kit.fontawesome.com/1ab94d0eba.js" crossorigin="anonymous"></script>
-  </head>
 
-  <body>
-    <header class="header-login">
-      <section class="container-login">
-        <div class="box-login">
-          <img src="img/phone.svg" alt="" />
-          <h1 class="title">Fazer login</h1>
-        </div>
-      </section>
-    </header>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="phone.png" />
+  <link rel="shortcut icon" href="./DashGestor/img/" type="image/x-icon" />
+  <title>Login</title>
+  <link rel="stylesheet" href="css/login.css" />
+  <script src="https://kit.fontawesome.com/1ab94d0eba.js" crossorigin="anonymous"></script>
+</head>
 
-    <main class="form-login">
-      <h2>Login</h2>
+<body>
+  <header class="header-login">
+    <section class="container-login">
+      <div class="box-login">
+        <img src="img/phone.svg" alt="" />
+        <h1 class="title">Fazer login</h1>
+      </div>
+    </section>
+  </header>
 
-      <form
-          
-        id="formulario_login"
-        method="post"
-        onsubmit="return entrar()"
-      >
-        
-          <select id="tipo" class="select" name="tipo">
-            <option value="">Escolha um usuário</option>
-            <option value="empresa">Empresa</option>
-            <option value="fastTech">FastTech</option>
-            <option value="gestor">Gestor</option>
-            <option value="suporte">Suporte</option>
-          </select>
-        
-        <div class="input-field">
-          <input
-            autocomplete="off"
-            type="text"
-            name="username"
-            id="username"
-            placeholder="Entre com seu Nome de Usuário"
-          />
-          <div class="underline"></div>
-        </div>
-        <div class="input-field">
-          <input
-            autocomplete="off"
-            type="password"
-            name="password"
-            id="password"
-            placeholder="Entre com a sua Senha"
-          />
-          <div class="underline"></div>
-        </div>
-        <a href="">Esqueceu senha, clique aqui</a>
-        <input autocomplete="off" type="submit" value="Continue" />
-      </form>
-    </main>
-  </body>
+  <main class="form-login">
+    <h2>Login</h2>
+
+    <form id="formulario_login" method="post" onsubmit="return entrar()">
+
+      <select id="tipo" class="select" name="tipo">
+        <option value="">Escolha um usuário</option>
+        <option value="empresa">Empresa</option>
+        <option value="fastTech">FastTech</option>
+        <option value="gestor">Gestor</option>
+        <option value="suporte">Suporte</option>
+      </select>
+
+      <div class="input-field">
+        <input autocomplete="off" type="text" name="username" id="username"
+          placeholder="Entre com seu Nome de Usuário" />
+        <div class="underline"></div>
+      </div>
+      <div class="input-field">
+        <input autocomplete="off" type="password" name="password" id="password" placeholder="Entre com a sua Senha" />
+        <div class="underline"></div>
+      </div>
+      <a href="">Esqueceu senha, clique aqui</a>
+      <input autocomplete="off" type="submit" value="Continue" />
+    </form>
+  </main>
+</body>
 
 </body>
 
@@ -71,6 +56,7 @@
 
 <script>
   session.storage.clear();
+
   function entrar() {
     var formulario = new URLSearchParams(new FormData(formulario_login));
     console.log(formulario);
