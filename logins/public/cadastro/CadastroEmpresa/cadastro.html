@@ -11,8 +11,7 @@
 
 <body>
     <div class="header">
-        <a href="listaEmpresas.html"><img src="../img/voltarAzul.png" alt="" class="voltar" onclick="voltarLista()"
-                id="voltarLista"></a>
+        <a href="listaEmpresas.html"><img src="../img/voltarAzul.png" alt="" class="voltar" onclick="voltarLista()" id="voltarLista"></a>
         <img src="../img/voltar.png" alt="" class="voltar" onclick="voltar()" id="voltar" style="display: none;">
         <div class="container">
 
@@ -27,14 +26,13 @@
 
     <main class="estiloForm">
 
-        <form id="form_cadastro" method="post" onsubmit="return cadastrar()" class="formEmpresa">
+        <form id="form_cadastro" method="post" class="formEmpresa">
 
             <div id="dadosEmpresa" class="formAcess">
                 <h3>Dados da empresa:</h3>
                 <label for="name" class="input-fild">
                     <span>Name:</span>
-                    <input type="text" id="nomeEmpresa" name="nomeEmpresa" class="input-padrao"
-                        placeholder="Nome e sobrenome" required minlength="4" autofocus="autofocus">
+                    <input type="text" id="nomeEmpresa" name="nomeEmpresa" class="input-padrao" placeholder="Nome e sobrenome">
                     <div class="underline"></div>
                 </label>
                 <label for="name" class="input-fild">
@@ -106,12 +104,12 @@
 
             </div>
 
-            <button id="btn_next" placeholder="Digite o nome" onclick="continuar()">
+            <button id="btn_next" placeholder="Digite o nome" onclick="continuar(event)">
                 Next
                 <img src="../img/next-button.png" alt="">
             </button>
 
-            <button type="submit" id="btn_entrar" value="Cadastrar" class="cadastrar" style="display: none;">
+            <button type="submit" id="btn_entrar" value="Cadastrar" class="cadastrar" style="display: none;" onclick="cadastrar()">
                 Cadastrar
                 <img src="../img/salvar.png" alt="">
             </button>
@@ -131,7 +129,8 @@
 
 <script>
 
-    function continuar() {
+    function continuar(event) {
+        event.preventDefault();
         document.getElementById("dadosEmpresa").style.display = "none";
         document.getElementById("dadosAcesso").style.display = "block";
         document.getElementById("btn_entrar").style.display = "block";
@@ -141,7 +140,7 @@
 
     }
 
-    function voltar() {
+    function voltar(event) {
         document.getElementById("dadosEmpresa").style.display = "block";
         document.getElementById("dadosAcesso").style.display = "none";
         document.getElementById("btn_entrar").style.display = "none";
@@ -155,17 +154,18 @@
     }
 
     function cadastrar() {
-        aguardar();
+
         var formulario = new URLSearchParams(new FormData(form_cadastro));
-        fetch("/usuarios/cadastrar", {
+
+        fetch("/gestor/cadastrar", {
             method: "POST",
             body: formulario
         }).then(function (response) {
 
             if (response.ok) {
 
-                window.location.href = 'login.html';
-
+                alert("Empresa Cadastrada no banco de dados")
+                window.location.href = "./listaEmpresas.html";
             } else {
 
                 console.log('Erro de cadastro!');
@@ -179,16 +179,6 @@
         return false;
     }
 
-    function aguardar() {
-        btn_entrar.disabled = true;
-        img_aguarde.style.display = 'block';
-        div_erro.style.display = 'none';
-    }
 
-    function finalizar_aguardar() {
-        btn_entrar.disabled = false;
-        img_aguarde.style.display = 'none';
-        div_erro.style.display = 'block';
-    }
 
 </script>
