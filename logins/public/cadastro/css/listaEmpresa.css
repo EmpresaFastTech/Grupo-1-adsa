@@ -329,3 +329,29 @@ form input[type="submit"]:hover {
   font-weight: bold
 }
 
+.divbalao{
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  padding: 0px 15px;
+}
+.divbalao div:nth-child(1){
+  width: 30px;
+}
+.divbalao p{
+  
+  width: 120px;
+}
+.divbalao div {
+   margin: 0px 10px;
+   width: 120px;
+   display: flex;
+   flex-direction: column;
+  
+}
+.cruddelete{
+  display: flex;
+  flex-direction: row !important;
+  justify-content: center;
+  align-items: center;
+}

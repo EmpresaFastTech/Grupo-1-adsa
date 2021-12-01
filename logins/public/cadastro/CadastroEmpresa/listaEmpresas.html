@@ -11,6 +11,7 @@
 
 <body>
   <!--header inicio-->
+
   <div class="header">
     <div class="container">
       <div>
@@ -26,6 +27,7 @@
   <main>
     <div class="containerList">
       <ul class="lista">
+
         <!--  <li>
           <h4 class="lado">
             <span>Id: </span> <span>Nome: </span> <span>CNPJ: </span>
@@ -50,9 +52,18 @@
   function armazenador(dados) {
     data.push(dados);
   }
-
+  function linkarDelete(event) {
+    event.preventDefault();
+    let indexDesejado = +(event.target.id.replace("deletar", ""));
+    let idResultado;
+    let nomeEmpresa;
+    idResultado = data[0][indexDesejado].idEmpresa;
+    nomeEmpresa = data[0][indexDesejado].nomeEmpresa;
+    deletarUsuario(idResultado);
+  }
   function linkarEmpresa(event) {
     event.preventDefault();
+
     const dado = data[0][+event.target.alt];
     sessionStorage.setItem('idEmpresa', dado.idEmpresa);
     sessionStorage.setItem('CNPJ', dado.CNPJ);
@@ -79,21 +90,26 @@
       const container = document.querySelector(".lista");
       dados.forEach((d) => {
         contador++;
-        container.innerHTML += ` <li>
-          <h4 class="lado">
-            
-            <span>Id: </span> <span>Nome: </span> <span>CNPJ: </span>
-          </h4>
-          <span class="menu">
-            <a class="linkmp"  onclick="linkarEmpresa(event)" href="./editar.html" >
-              <span class="idemp" style="opacity: 0; position: absolute;">${contador}
-              </span><img src="../img/iconEditar.png" alt="${contador}" />
-            </a>
-          </span>
-          <h4>
-            <span>${d.idEmpresa}</span> <span>${d.nomeEmpresa}</span> <span>${d.CNPJ}</span>
-          </h4>
+        container.innerHTML += ` <li class = "divbalao">
+          <div>
+            <p>ID:</p>
+            <p>${d.idEmpresa}</p>
+          </div>
+          <div>
+            <p>Nome:</p>
+            <p>${d.nomeEmpresa}</p>
+          </div>
+          <div>
+            <p>Cnpj:</p>
+            <p>${d.CNPJ}</p>
+          </div>
+          <a class="cruddelete"  onclick="linkarEmpresa(event)" href="./editar.html">
+            <img src="../img/iconEditar.png" alt="${contador}" />
+            <a onclick="linkarDelete(event)" id="deletar${contador}" href="#">Deletar</a>
+          </a>
+         
         </li>`;
+
       })
     }, 100);
 
@@ -116,7 +132,30 @@
         console.error(`Erro na obtenção das publicações do usuário: ${error.message}`);
       });
   }
-  obterEmpresas()
+  obterEmpresas();
+
+  function deletarUsuario(idUsuario) {
+    fetch(`/gestor/delete/${idUsuario}`, {
+      method: "DELETE"
+    })
+      .then(resposta => {
+        if (resposta.ok) {
+          resposta.json().then(function (resposta) {
+
+            alert("deletado!");
+            location.reload();
+            // alert(JSON.stringify(resposta))
+          });
+        } else {
+
+          console.error('Nenhum dado encontrado ou erro na API');
+        }
+      })
+      .catch(function (error) {
+        console.error(`Erro na obtenção das publicações do usuário: ${error.message}`);
+      });
+  }
+
 </script>
 
 </html>

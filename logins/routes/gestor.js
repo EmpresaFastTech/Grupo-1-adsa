@@ -4,7 +4,7 @@ var sequelize = require('../models').sequelize;
 var Gestao = require('../models').Gestao;
 var Empresa = require('../models').Empresa;
 
-router.post('/update', function(req, res, next) {
+router.put('/update', function(req, res, next) {
 
 	var idEmpresa = req.body.idEmpresa; 
 	var nomeEmpresa = req.body.nomeEmpresa; 	
@@ -42,6 +42,26 @@ router.post('/update', function(req, res, next) {
 		res.status(500).send(erro.message);
   	});
 });
+/* ROTA DELETAR */
+router.delete('/delete/:idUsuario', function (req, res, next) {
+    console.log('Recuperando todas as publicações');
+  
+    var idUsuario = req.params.idUsuario;
+  
+    let instrucaoSql = `DELETE FROM [dbo].[Empresa] WHERE idEmpresa = ${idUsuario}`;
+  
+    sequelize.query(instrucaoSql, {
+        model:  Empresa,
+        mapToModel: true
+    })
+        .then(resultado => {
+            console.log(`Encontrados: ${resultado.length}`);
+            res.json(resultado);
+        }).catch(erro => {
+            console.error(erro);
+            res.status(500).send(erro.message);
+        });
+  });
 
 /* ROTA QUE RECUPERA AS PUBLICAÇÕES DE UM USUÁRIO PELO ID */
 router.get('/:idUsuario', function (req, res, next) {

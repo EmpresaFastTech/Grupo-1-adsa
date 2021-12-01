@@ -30,8 +30,7 @@
         <h3>Dados da empresa:</h3>
         <label for="name" class="input-fild">
           <span>Name:</span>
-          <input type="text" id="nomeEmpresa" name="nomeEmpresa" class="input-padrao" placeholder="Nome e sobrenome"
-            required minlength="4" autofocus="autofocus" />
+          <input type="text" id="nomeEmpresa" name="nomeEmpresa" class="input-padrao" placeholder="Nome e sobrenome" required minlength="4" autofocus="autofocus" />
           <div class="underline"></div>
         </label>
         <label for="name" class="input-fild">
@@ -132,7 +131,7 @@
     console.log(formulario.toString());
     console.log(formulario);
     fetch("/gestor/update", {
-      method: "POST",
+      method: "PUT",
       body: formulario,
     }).then((resposta) => {
       if (resposta.ok) {
@@ -142,7 +141,7 @@
       } else {
         alert("[UPDATE] : Dados Atulizados !");
 
-        resposta.text().then((texto) => {});
+        resposta.text().then((texto) => { });
       }
     });
     return false;
