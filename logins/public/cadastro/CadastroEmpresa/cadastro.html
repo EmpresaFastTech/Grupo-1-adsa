@@ -26,7 +26,7 @@
 
     <main class="estiloForm">
 
-        <form id="form_cadastro" method="post" class="formEmpresa">
+        <form id="form_cadastro" method="post" action="" class="formEmpresa">
 
             <div id="dadosEmpresa" class="formAcess">
                 <h3>Dados da empresa:</h3>
@@ -163,11 +163,10 @@
         }).then(function (response) {
 
             if (response.ok) {
-
                 alert("Empresa Cadastrada no banco de dados")
                 window.location.href = "./listaEmpresas.html";
             } else {
-
+                window.location.href = "./listaEmpresas.html";
                 console.log('Erro de cadastro!');
                 response.text().then(function (resposta) {
                     div_erro.innerHTML = resposta;

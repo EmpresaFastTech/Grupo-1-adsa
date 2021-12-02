@@ -5,8 +5,6 @@ var Gestao = require('../models').Gestao;
 var Empresa = require('../models').Empresa;
 /* ROTA CADASTRO EMPRESA */
 router.post('/cadastrar', function(req, res, next) {
-
-	
 	Empresa.create({
         nomeEmpresa : req.body.nomeEmpresa, 	
         CNPJ: req.body.cnpj, 	
