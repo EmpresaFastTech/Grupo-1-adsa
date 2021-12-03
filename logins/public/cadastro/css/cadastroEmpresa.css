@@ -311,3 +311,11 @@ section.images .circle {
   }
 }
 
+#modal{
+  border-radius: 10px;
+  display: none;
+
+}
+#modal.ativo{
+  display: block !important;
+}

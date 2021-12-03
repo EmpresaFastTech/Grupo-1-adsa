@@ -12,7 +12,7 @@
 <body>
     <div class="header">
         <a href="listaEmpresas.html"><img src="../img/voltarAzul.png" alt="" class="voltar" onclick="voltarLista()" id="voltarLista"></a>
-        <img src="../img/voltar.png" alt="" class="voltar" onclick="voltar()" id="voltar" style="display: none;">
+
         <div class="container">
 
             <h1 class="titulo">Cadastro de empresas</h1>
@@ -25,8 +25,12 @@
     </div>
 
     <main class="estiloForm">
-
-        <form id="form_cadastro" method="POST" class="formEmpresa">
+        <div id="modal" style="  background-color: tomato; position: absolute; top: 20%; left: 30%; width:500px; height: 400px; z-index: 1000;">
+            <h1>EMPRESA CADASTRADA </h1>
+            <p>Sem bug agr UHUU KKKKKK</p>
+            <a href="./listaEmpresas.html">Vai ver o bichinho la cadastrado kkkk</a>
+        </div>
+        <form id="form_cadastro" class="formEmpresa" onsubmit="return cadastrar()">
 
             <div id="dadosEmpresa" class="formAcess">
                 <h3>Dados da empresa:</h3>
@@ -104,12 +108,15 @@
 
             </div>
 
-            <button id="btn_next" placeholder="Digite o nome" onclick="continuar(event)">
-                Next
-                <img src="../img/next-button.png" alt="">
-            </button>
+            <div>
+                <button id="btn_next" placeholder="Digite o nome" onclick="continuar(event)">
+                    Next
+                    <img src="../img/next-button.png" alt="">
+                </button>
 
-            <button type="submit" id="btn_entrar" value="Cadastrar" class="cadastrar" style="display: none;" onclick="cadastrar()">
+            </div>
+
+            <button type="submit" id="btn_entrar" value="Cadastrar" class="cadastrar" style="display: none;">
                 Cadastrar
                 <img src="../img/salvar.png" alt="">
             </button>
@@ -131,12 +138,15 @@
 
     function continuar(event) {
         event.preventDefault();
+        const ceps = document.getElementById("cep");
+        ceps.value = ceps.value.replace("-", "");
+
         document.getElementById("dadosEmpresa").style.display = "none";
         document.getElementById("dadosAcesso").style.display = "block";
         document.getElementById("btn_entrar").style.display = "block";
         document.getElementById("btn_next").style.display = "none";
         document.getElementById("voltarLista").style.display = "none";
-        document.getElementById("voltar").style.display = "block";
+        /*    document.getElementById("voltar").style.display = "block"; */
 
     }
 
@@ -145,7 +155,7 @@
         document.getElementById("dadosAcesso").style.display = "none";
         document.getElementById("btn_entrar").style.display = "none";
         document.getElementById("btn_next").style.display = "block";
-        document.getElementById("voltar").style.display = "none";
+        /*   document.getElementById("voltar").style.display = "none"; */
         document.getElementById("voltarLista").style.display = "block";
     }
 
@@ -154,23 +164,22 @@
     }
 
     function cadastrar() {
-
+        const modal = document.querySelector("#modal");
         var formulario = new URLSearchParams(new FormData(form_cadastro));
+
 
         fetch("/gestor/cadastrar", {
             method: "POST",
             body: formulario
         }).then(function (response) {
-
             if (response.ok) {
-                alert("Empresa Cadastrada no banco de dados")
-                window.location.href = "./listaEmpresas.html";
+                modal.classList.add("ativo");
+                /* window.location.href = "./listaEmpresas.html"; */
             } else {
                 window.location.href = "./listaEmpresas.html";
                 console.log('Erro de cadastro!');
             }
         });
-
         return false;
     }
 

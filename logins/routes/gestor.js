@@ -6,18 +6,19 @@ var Empresa = require('../models').Empresa;
 /* ROTA CADASTRO EMPRESA */
 router.post('/cadastrar', function(req, res, next) {
 	Empresa.create({
-        nomeEmpresa : req.body.nomeEmpresa, 	
-        CNPJ: req.body.cnpj, 	
-        cep : req.body.cep, 	
-        bairro : req.body.bairro, 	
-        logradouro : req.body.logradouro, 	
+        loginEmpresa : req.body.loginEmpresa,
+        senhaEmpresa : req.body.senhaEmpresa,
+        nomeEmpresa : req.body.nomeEmpresa, 
+        CNPJ: req.body.cnpj,
+        telefone : req.body.telefone,
+        email : req.body.email,
+        logradouro : req.body.logradouro, 
         cidade : req.body.cidade,
         numero : req.body.numero,
         complemento : req.body.complemento,
-        loginEmpresa : req.body.loginEmpresa,
-        senhaEmpresa : req.body.senhaEmpresa,
-        telefone : req.body.telefone,
-        email : req.body.email
+        cep : req.body.cep, 
+        bairro : req.body.bairro
+        
 	}).then(resultado => {
 		console.log(`Registro criado: ${resultado}`)
         res.send(resultado);
