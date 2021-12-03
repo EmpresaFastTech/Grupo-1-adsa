@@ -75,11 +75,10 @@
 
 </html>
 <script>
-    var idUsuario = sessionStorage.idEmpresa;
+
     function cadastrar() {
-
+        var idUsuario = sessionStorage.idEmpresa;
         var formulario = new URLSearchParams(new FormData(form_cadastro));
-
         fetch(`/gestor/cadastrarresponsavel/${idUsuario}`, {
             method: "POST",
             body: formulario
