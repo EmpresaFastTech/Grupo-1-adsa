@@ -178,7 +178,7 @@ button img {
 
 main form button {
   cursor: pointer;
-  width: 25%;
+  width: 35%;
   height: 40px;
   margin-top: 1rem;
   border: none;
@@ -192,7 +192,7 @@ main form button {
 }
 
 main form button:hover {
-  width: 26%;
+  width:36%;
   height: 41px;
   letter-spacing: 0.2px;
   background: linear-gradient(#5e89ee, #023b64);

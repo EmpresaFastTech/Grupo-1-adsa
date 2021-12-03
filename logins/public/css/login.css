@@ -82,7 +82,7 @@ body {
 a {
     color: var(--cor-terciaria-roxo);
     text-decoration: none;
-    margin-top: 20px;
+    margin-top: 35px;
 }
 
 
@@ -94,7 +94,6 @@ main.form-login {
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
 }
-
 
 main h2 {
     font-weight: 600;
@@ -158,7 +157,7 @@ form .input-field:first-child {
     font-size: 0.9rem;
     color: rgba(0, 0, 0, 0.7);
     width: 100%;
-    margin: 15px 0px;
+    margin-top: 30px;
 }
 
 .input-field input::placeholder {
@@ -207,12 +206,11 @@ select {
     -webkit-appearance: none;
     -moz-appearance: none;
     width: 100%;
-    margin-bottom: 1rem;
     width: 100%;
     font-size: 16px;
     height: 34px;
     outline: none;
     border: 1px solid rgb(226, 226, 226);
     appearance: none;
-    background: url(../img/seta-para-baixo.png) 96% / 5% no-repeat ;
+    background: url(../img/seta-para-baixo.png) 96% / 5% no-repeat;
 }
