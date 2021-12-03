@@ -38,12 +38,14 @@
                 </select>
                 <label class="input-fild">
                     <span>Name:</span>
-                    <input type="text" id="nomeResponsavel" name="nomeResponsavel" class="input-padrao" placeholder="Nome e sobrenome" required minlength="4" autofocus="autofocus">
+                    <input type="text" id="nomeResponsavel" name="nomeResponsavel" class="input-padrao"
+                        placeholder="Nome e sobrenome" required minlength="4" autofocus="autofocus">
                     <div class="underline"></div>
                 </label>
                 <label class="input-fild">
                     <span>Telefone:</span>
-                    <input type="text" id="telefone" name="telefone" class="input-padrao" placeholder="telefone" required minlength="4" autofocus="autofocus">
+                    <input type="text" id="telefone" name="telefone" class="input-padrao" placeholder="telefone"
+                        required minlength="4" autofocus="autofocus">
                     <div class="underline"></div>
                 </label>
                 <label class="input-fild">
@@ -76,7 +78,6 @@
 
 </html>
 <script>
-
     function cadastrar() {
         var idUsuario = sessionStorage.idEmpresa;
         var formulario = new URLSearchParams(new FormData(form_cadastro));

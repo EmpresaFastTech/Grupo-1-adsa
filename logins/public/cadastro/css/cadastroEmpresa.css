@@ -315,6 +315,72 @@ section.images .circle {
   display: none;
 
 }
+
 #modal.ativo{
   display: block !important;
+}
+
+.modal{
+  position: absolute; top: 2%; 
+  left: 30%; 
+  width: 500px; 
+  height: 120px; z-index: 1000;
+  background: linear-gradient(90deg, rgba(93,165,216,1) 0%, rgba(142,197,235,1) 57%, rgba(194,221,241,1) 100%);
+  text-align: center;
+  border-radius: 15px;
+}
+
+.efeitoDesce{
+animation-name: efeitoDesce;
+-webkit-animation-name: efeitoDesce;	
+
+animation-duration: 1s;	
+-webkit-animation-duration: 1s;
+
+animation-timing-function: ease;	
+-webkit-animation-timing-function: ease;	
+
+visibility: visible !important;						
+}
+
+@keyframes efeitoDesce {
+0% {
+  transform: translateY(-100%);
+}
+50%{
+  transform: translateY(8%);
+}
+65%{
+  transform: translateY(-4%);
+}
+80%{
+  transform: translateY(4%);
+}
+95%{
+  transform: translateY(-2%);
+}			
+100% {
+  transform: translateY(0%);
+}		
+}
+
+@-webkit-keyframes efeitoDesce {
+0% {
+  -webkit-transform: translateY(-100%);
+}
+50%{
+  -webkit-transform: translateY(8%);
+}
+65%{
+  -webkit-transform: translateY(-4%);
+}
+80%{
+  -webkit-transform: translateY(4%);
+}
+95%{
+  -webkit-transform: translateY(-2%);
+}			
+100% {
+  -webkit-transform: translateY(0%);
+}	
 }

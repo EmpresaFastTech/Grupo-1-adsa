@@ -54,13 +54,12 @@
                 </li>
               -->
             </ul>
-
-            <button onclick="location.href = './cadastroFuncionarios.html';">Criar novo <img src="../img/iconMais.png" alt=""></button>
+            <button onclick="location.href = './cadastroFuncionarios.html';">Criar novo
+                <img src="../img/iconMais.png" alt="">
+            </button>
         </div>
 
     </main>
-
-
 
 </body>
 
@@ -81,6 +80,7 @@
                 </li>`
         })
     }
+
     function construirBalaoSup(dadosBalao) {
         let container = document.querySelector(".listaSup");
         dadosBalao.forEach((d) => {
@@ -94,6 +94,7 @@
                 </li>`
         })
     }
+
     function obterListaGestor(idUsuario) {
         fetch(`/gestor/${idUsuario}`)
             .then(resposta => {
