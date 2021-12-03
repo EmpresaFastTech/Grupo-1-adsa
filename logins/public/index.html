@@ -36,8 +36,7 @@
       </select>
 
       <div class="input-field">
-        <input autocomplete="off" type="text" name="username" id="username"
-          placeholder="Entre com seu Nome de Usuário" />
+        <input autocomplete="off" type="text" name="username" id="username" placeholder="Entre com seu Nome de Usuário" />
         <div class="underline"></div>
       </div>
       <div class="input-field">
@@ -69,6 +68,7 @@
           sessionStorage.tipo = json.tipo;
           sessionStorage.id = json.idResponsavel;
           sessionStorage.nome = json.nomeResponsavel;
+          sessionStorage.idEmpresa = json.idEmpresa;
           if (tipo.value == "gestor") {
             window.location.href = "./DashGestor/gestorDash.html";
           } else if (tipo.value == "suporte") {

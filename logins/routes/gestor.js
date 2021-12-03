@@ -3,6 +3,28 @@ var router = express.Router();
 var sequelize = require('../models').sequelize;
 var Gestao = require('../models').Gestao;
 var Empresa = require('../models').Empresa;
+
+
+/* ROTA PARA CADASTRAR FUNCIONARIO */
+
+router.post("/cadastrarresponsavel/:idUsuario", function(req, res, next) {
+    let idUsuario = req.params.idUsuario;
+	Gestao.create({
+        CPF : req.body.CPF,
+        loginResponsavel : req.body.loginResponsavel,
+        senhaResponsavel : req.body.senhaResponsavel, 
+        telefone : req.body.telefone,
+        nomeResponsavel : req.body.nomeResponsavel,
+        tipo : req.body.tipo, 
+        fkEmpresa : idUsuario,
+	}).then(resultado => {
+		console.log(`Registro criado: ${resultado}`)
+        res.send(resultado);
+    }).catch(erro => {
+		console.error(erro);
+		res.status(500).send(erro.message);
+  	});
+});
 /* ROTA CADASTRO EMPRESA */
 router.post('/cadastrar', function(req, res, next) {
 	Empresa.create({
@@ -18,7 +40,7 @@ router.post('/cadastrar', function(req, res, next) {
         complemento : req.body.complemento,
         cep : req.body.cep, 
         bairro : req.body.bairro
-        
+
 	}).then(resultado => {
 		console.log(`Registro criado: ${resultado}`)
         res.send(resultado);
@@ -27,7 +49,7 @@ router.post('/cadastrar', function(req, res, next) {
 		res.status(500).send(erro.message);
   	});
 });
-
+/* Update tabela */
 router.put('/update', function(req, res, next) {
 
 	var idEmpresa = req.body.idEmpresa; 
