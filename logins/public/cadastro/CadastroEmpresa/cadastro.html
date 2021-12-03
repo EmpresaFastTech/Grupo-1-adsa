@@ -26,7 +26,7 @@
 
     <main class="estiloForm">
 
-        <form id="form_cadastro" method="post" action="" class="formEmpresa">
+        <form id="form_cadastro" method="POST" class="formEmpresa">
 
             <div id="dadosEmpresa" class="formAcess">
                 <h3>Dados da empresa:</h3>
@@ -62,7 +62,7 @@
                 </label>
                 <label for="name" class="input-fild">
                     <span>Número:</span>
-                    <input type="text" id="numero" name="numero" placeholder="Digite o número">
+                    <input type="number" id="numero" name="numero" placeholder="Digite o número">
                     <div class="underline"></div>
                 </label>
                 <label for="name" class="input-fild">
@@ -168,10 +168,6 @@
             } else {
                 window.location.href = "./listaEmpresas.html";
                 console.log('Erro de cadastro!');
-                response.text().then(function (resposta) {
-                    div_erro.innerHTML = resposta;
-                });
-                finalizar_aguardar();
             }
         });
 

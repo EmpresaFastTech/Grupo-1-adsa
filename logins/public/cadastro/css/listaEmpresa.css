@@ -355,3 +355,11 @@ form input[type="submit"]:hover {
   justify-content: center;
   align-items: center;
 }
+.jorge{
+  background-image: url("../img/excluir.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 45px;
+  width: 45px;
+  text-indent: -9999px;
+}
