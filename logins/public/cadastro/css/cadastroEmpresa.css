@@ -41,28 +41,27 @@ main {
   align-items: center;
   justify-content: space-between;
   padding-left: 134px;
-  padding-top: 30px;
   padding-right: 240px;
 }
 
 .container h1 {
   color: var(--primary-azul);
-  font-size: 3rem;
-  margin-bottom: 1rem;
+  font-size: 2.8rem;
   text-align: center;
-}
-
-.titulo {
-  align-self: flex-end !important;
-}
-
-.tituloFast {
-  font-size: 2rem;
-  font-weight: bold;
 }
 
 .container img {
   height: 32px;
+}
+
+.box-fast{
+  display: flex;
+  justify-content: center;
+}
+
+.tituloFast {
+  font-size: 1.6rem;
+  font-weight: bold;
 }
 
 main form {

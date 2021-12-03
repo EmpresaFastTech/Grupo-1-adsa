@@ -5,7 +5,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cadastro</title>
+    <link rel="shortcut icon" type="imagex/png" href="../../img/iconEmpresa.png">
+    <title>Cadastrar Cliente</title>
     <link rel="stylesheet" href="../css/cadastroEmpresa.css" />
 </head>
 
@@ -16,9 +17,8 @@
         <img src="../img/voltarAzul.png" alt="" class="voltar" onclick="voltar()" id="voltar" style="display: none" />
 
         <div class="container">
-            <h1 class="titulo">Cadastro de empresas</h1>
-
-            <div>
+            <h1>Cadastrar de empresas</h1>
+            <div class="box-fast">
                 <img src="../img/iconPreto.png" alt="" />
                 <span class="tituloFast">FastTech</span>
             </div>
@@ -26,7 +26,8 @@
     </div>
 
     <main class="estiloForm">
-        <div id="modal" style="background-color: tomato; position: absolute; top: 20%; left: 30%; width: 500px; height: 400px; z-index: 1000; ">
+        <div id="modal"
+            style="background-color: tomato; position: absolute; top: 20%; left: 30%; width: 500px; height: 400px; z-index: 1000; ">
             <h1>EMPRESA CADASTRADA</h1>
             <p>Sem bug agr UHUU KKKKKK</p>
             <a href="./listaEmpresas.html">Vai ver o bichinho la cadastrado kkkk</a>
@@ -86,29 +87,29 @@
                 <h3>Dados da de acesso:</h3>
                 <label for="name" class="input-fild">
                     <span>Login:</span>
-                    <input type="text" id="loginEmpresa" name="loginEmpresa" placeholder="Digite o bairro" />
+                    <input type="text" id="loginEmpresa" name="loginEmpresa" placeholder="Digite o login" />
                     <div class="underline"></div>
                 </label>
                 <label for="name" class="input-fild">
                     <span>Senha:</span>
-                    <input type="text" id="senhaEmpresa" name="senhaEmpresa" placeholder="Digite o logradouro" />
+                    <input type="text" id="senhaEmpresa" name="senhaEmpresa" placeholder="Digite a senha" />
                     <div class="underline"></div>
                 </label>
                 <label for="name" class="input-fild">
                     <span>Confirmar senha:</span>
-                    <input type="text" id="confiSenha" name="confiSenha" placeholder="Digite o cidade" />
+                    <input type="text" id="confiSenha" name="confiSenha" placeholder="Confirme a senha" />
                     <div class="underline"></div>
                 </label>
 
                 <h3>Dados para contato:</h3>
                 <label for="name" class="input-fild">
                     <span>Telefone:</span>
-                    <input type="text" id="telefone" name="telefone" placeholder="Digite o número" />
+                    <input type="text" id="telefone" name="telefone" placeholder="Digite o telefone" />
                     <div class="underline"></div>
                 </label>
                 <label for="name" class="input-fild">
                     <span>Email:</span>
-                    <input type="text" id="email" name="email" placeholder="Digite o número" />
+                    <input type="text" id="email" name="email" placeholder="Digite o e-mail" />
                     <div class="underline"></div>
                 </label>
 

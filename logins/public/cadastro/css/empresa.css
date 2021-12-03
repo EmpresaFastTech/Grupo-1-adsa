@@ -186,6 +186,7 @@ h4 span {
   min-width: 150vh;
   min-height: 82vh;
   background-color: #fffffff6;
+  border-radius: 5px;
 }
 
 .container {
@@ -361,11 +362,12 @@ form input[type="submit"]:hover {
   justify-content: center;
   align-items: center;
 }
-.jorge{
+.btnExcluir{
   background-image: url("../img/excluir.png");
   background-repeat: no-repeat;
   background-size: cover;
-  height: 45px;
-  width: 45px;
+  height: 36px;
+  width: 36px;
   text-indent: -9999px;
+  margin-left: 2px;
 }

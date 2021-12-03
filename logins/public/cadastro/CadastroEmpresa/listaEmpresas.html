@@ -19,9 +19,8 @@
         <img src="../img/iconPreto.png" alt="" />
         <h1 class="titulo">FastTec</h1>
       </div>
-
-      <span class="highlight"> Empresas cadastradas</span>
-      <a href="../../index.html">Logout</a>
+      <span> Empresas cadastradas</span>
+      <a href="../../index.html"><img src="../img/logout.png" alt=""></a>
     </div>
   </div>
 
@@ -53,9 +52,11 @@
 
 <script>
   const data = [];
+
   function armazenador(dados) {
     data.push(dados);
   }
+
   function linkarDelete(event) {
     event.preventDefault();
     let indexDesejado = +(event.target.id.replace("deletar", ""));
@@ -65,6 +66,7 @@
     nomeEmpresa = data[0][indexDesejado].nomeEmpresa;
     deletarUsuario(idResultado);
   }
+
   function linkarEmpresa(event) {
     event.preventDefault();
 
@@ -109,7 +111,7 @@
           </div>
           <a class="cruddelete"  onclick="linkarEmpresa(event)" href="./editar.html">
             <img src="../img/iconEditar.png" alt="${contador}" />
-            <a onclick="linkarDelete(event)" class= "jorge" id="deletar${contador}" href="#">oi</a>
+            <a onclick="linkarDelete(event)" class= "btnExcluir" id="deletar${contador}" href="#">oi</a>
           </a>
          
         </li>`;
@@ -118,6 +120,7 @@
     }, 100);
 
   }
+
   function obterEmpresas(idUsuario) {
     fetch(`/gestor/empresa/${idUsuario}`)
       .then(resposta => {
@@ -140,8 +143,8 @@
 
   function deletarUsuario(idUsuario) {
     fetch(`/gestor/delete/${idUsuario}`, {
-      method: "DELETE"
-    })
+        method: "DELETE"
+      })
       .then(resposta => {
         if (resposta.ok) {
           resposta.json().then(function (resposta) {
@@ -159,5 +162,4 @@
         console.error(`Erro na obtenção das publicações do usuário: ${error.message}`);
       });
   }
-
 </script>
