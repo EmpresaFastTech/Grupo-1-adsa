@@ -80,6 +80,7 @@ main{
   display: flex;
   padding-left: 25vh;
   margin-top: 60px
+
 }
 
 .containerList {
@@ -87,8 +88,9 @@ main{
   height: 65vh;
 }
 
+
 .containerList ul {
-  min-width: 80vh;
+  min-width: 90vh;
   height: 65vh;
   padding: 0 1rem 1rem 0;
   overflow: hidden;
@@ -176,11 +178,6 @@ h4 span {
   margin-left: 5px;
 }
 
-main{
-  width: 100%;
-  justify-content: center;
-  display: flex;
-}
 
 .main-container {
   display: flex;
@@ -318,15 +315,24 @@ form input[type="submit"]:hover {
   background: linear-gradient(to right, rgb(36, 36, 36), rgb(90, 90, 90));
 } */
 
+
+.botnsFuncoes{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 .botnsFuncoes img{
   width: 35px;
   margin-top: 1.3rem;
-  margin-left: 0.7rem;
+  margin-left: 1rem;
   cursor: pointer;
 }
 
 .botnsFuncoes span{
-  font-weight: bold
+  font-weight: bold;
+  padding-top: 6%;
+  padding-left: 0.6%;
 }
 
 .divbalao{

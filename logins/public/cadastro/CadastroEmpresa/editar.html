@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cadastro</title>
-  <link rel="stylesheet" href="../css/listaEmpresa.css" />
+  <link rel="stylesheet" href="../css/empresa.css" />
 </head>
 
 <body>
@@ -30,7 +30,8 @@
         <h3>Dados da empresa:</h3>
         <label for="name" class="input-fild">
           <span>Name:</span>
-          <input type="text" id="nomeEmpresa" name="nomeEmpresa" class="input-padrao" placeholder="Nome e sobrenome" required minlength="4" autofocus="autofocus" />
+          <input type="text" id="nomeEmpresa" name="nomeEmpresa" class="input-padrao" placeholder="Nome e sobrenome"
+            required minlength="4" autofocus="autofocus" />
           <div class="underline"></div>
         </label>
         <label for="name" class="input-fild">
@@ -106,14 +107,11 @@
         </div>
 
         <div class="botnsFuncoes">
-          <a href="cadastro.html">
-            <img src="../img/salvarEscuro.png" alt="" />
-          </a>
+          <a><img src="../img/salvarEscuro.png" alt="" onclick="updateTabela()" /></a>
           <span>Salvar</span>
-          <input type="submit" value="Atualizar" />
-          <a href="cadastro.html">
-            <img src="../img/iconMaisEscuro.png" alt="" />
-          </a>
+          <!-- <input type="submit" value="Atualizar" /> -->
+
+          <a href="cadastro.html"><img src="../img/iconMaisEscuro.png" alt="" /></a>
           <span>Novo</span>
 
           <a href="listaEmpresas.html">
@@ -125,6 +123,7 @@
     </form>
   </div>
 </body>
+
 <script>
   function updateTabela() {
     var formulario = new URLSearchParams(new FormData(formulario_login));
@@ -139,9 +138,9 @@
           console.log(json);
         });
       } else {
-        alert("[UPDATE] : Dados Atulizados !");
+        alert("[UPDATE] : Dados Atualizados !");
 
-        resposta.text().then((texto) => { });
+        resposta.text().then((texto) => {});
       }
     });
     return false;

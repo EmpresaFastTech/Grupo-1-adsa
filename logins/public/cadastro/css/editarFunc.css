@@ -16,11 +16,13 @@
 }
 
 body {
-    background-image: url(../img/fundoEditarFunc.jpg);
+    background-image: url(../img/fundoEditarFunc.png);
     background-repeat: no-repeat;
-    background-size: 600px;
-    background-position-y: 5vh !important;
-    background-position:  right;    
+    background-size: 450px;
+    background-position-x: 135vh !important;
+    background-position-y: 10vh !important;
+
+    background-position: right;
 }
 
 a {
@@ -307,13 +309,23 @@ h4 span {
     margin-bottom: 20px;
 }
 
-.botnsFuncoes img {
+
+
+.botnsFuncoes{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .botnsFuncoes img{
     width: 35px;
     margin-top: 1.3rem;
-    margin-left: 0.7rem;
+    margin-left: 1rem;
     cursor: pointer;
-}
-
-.botnsFuncoes span {
-    font-weight: bold
-}
+  }
+  
+  .botnsFuncoes span{
+    font-weight: bold;
+    padding-top: 6.5%;
+    padding-left: 0.6%;
+  }

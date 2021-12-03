@@ -62,6 +62,10 @@
 
 
 </body>
+
+
+</html>
+
 <script>
     function construirBalao(dadosBalao) {
         let container = document.querySelector(".listaGestor");
@@ -83,7 +87,7 @@
             container.innerHTML += ` <li>
                     <h4 class="lado"><span>Nome: </span> <span>Telefone: </span> </h4>
                     <span class="menu">
-                        <a href="editar.html"><img src="../img/iconEditarPreto.png" alt=""></a>
+                        <a href="editarFunc.html"><img src="../img/iconEditarPreto.png" alt=""></a>
                     </span>
                     <h4><span>${d.nomeResponsavel}</span> <span>${(d.telefone).trim()}</span></h4>
                 </li>`
@@ -127,5 +131,3 @@
     }
     obterListaSup(1)
 </script>
-
-</html>
