@@ -2,104 +2,107 @@ var express = require('express');
 var router = express.Router();
 var sequelize = require('../models').sequelize;
 var Gestao = require('../models').Gestao;
+var Funcionario = require('../models').Funcionario;
 var Empresa = require('../models').Empresa;
 
 
 /* ROTA PARA CADASTRAR FUNCIONARIO */
 
-router.post("/cadastrarresponsavel/:idUsuario", function(req, res, next) {
+router.post("/cadastrarresponsavel/:idUsuario", function (req, res, next) {
     let idUsuario = req.params.idUsuario;
-	Gestao.create({
-        CPF : req.body.CPF,
-        loginResponsavel : req.body.loginResponsavel,
-        senhaResponsavel : req.body.senhaResponsavel, 
-        telefone : req.body.telefone,
-        nomeResponsavel : req.body.nomeResponsavel,
-        tipo : req.body.tipo, 
-        fkEmpresa : idUsuario,
-	}).then(resultado => {
-		console.log(`Registro criado: ${resultado}`)
+    Gestao.create({
+        CPF: req.body.CPF,
+        loginResponsavel: req.body.loginResponsavel,
+        senhaResponsavel: req.body.senhaResponsavel,
+        telefone: req.body.telefone,
+        nomeResponsavel: req.body.nomeResponsavel,
+        tipo: req.body.tipo,
+        fkEmpresa: idUsuario,
+    }).then(resultado => {
+        console.log(`Registro criado: ${resultado}`)
         res.send(resultado);
     }).catch(erro => {
-		console.error(erro);
-		res.status(500).send(erro.message);
-  	});
+        console.error(erro);
+        res.status(500).send(erro.message);
+    });
 });
 /* ROTA CADASTRO EMPRESA */
-router.post('/cadastrar', function(req, res, next) {
-	Empresa.create({
-        loginEmpresa : req.body.loginEmpresa,
-        senhaEmpresa : req.body.senhaEmpresa,
-        nomeEmpresa : req.body.nomeEmpresa, 
+router.post('/cadastrar', function (req, res, next) {
+    Empresa.create({
+        loginEmpresa: req.body.loginEmpresa,
+        senhaEmpresa: req.body.senhaEmpresa,
+        nomeEmpresa: req.body.nomeEmpresa,
         CNPJ: req.body.cnpj,
-        telefone : req.body.telefone,
-        email : req.body.email,
-        logradouro : req.body.logradouro, 
-        cidade : req.body.cidade,
-        numero : req.body.numero,
-        complemento : req.body.complemento,
-        cep : req.body.cep, 
-        bairro : req.body.bairro
+        telefone: req.body.telefone,
+        email: req.body.email,
+        logradouro: req.body.logradouro,
+        cidade: req.body.cidade,
+        numero: req.body.numero,
+        complemento: req.body.complemento,
+        cep: req.body.cep,
+        bairro: req.body.bairro
 
-	}).then(resultado => {
-		console.log(`Registro criado: ${resultado}`)
+    }).then(resultado => {
+        console.log(`Registro criado: ${resultado}`)
         res.send(resultado);
     }).catch(erro => {
-		console.error(erro);
-		res.status(500).send(erro.message);
-  	});
+        console.error(erro);
+        res.status(500).send(erro.message);
+    });
 });
-/* Update tabela */
-router.put('/update', function(req, res, next) {
 
-	var idEmpresa = req.body.idEmpresa; 
-	var nomeEmpresa = req.body.nomeEmpresa; 	
-	var CNPJ= req.body.CNPJ; 	
-	var cep = req.body.cep; 	
-	var bairro = req.body.bairro; 	
-	var logradouro = req.body.logradouro; 	
-  	var cidade = req.body.cidade;
-  	var numero = req.body.numero;
-  	var complemento = req.body.complemento;
-  	var loginEmpresa = req.body.loginEmpresa;
-  	var senhaEmpresa = req.body.senhaEmpresa;
-  	var telefone = req.body.telefone;
-  	var email = req.body.email;
-	let instrucaoSql;
-	 
-	instrucaoSql = `update [dbo].[Empresa] set loginEmpresa = '${loginEmpresa}',senhaEmpresa='${senhaEmpresa}',nomeEmpresa='${nomeEmpresa}',CNPJ='${CNPJ}',telefone='${telefone}',email='${email}',logradouro='${logradouro}',cidade='${cidade}',numero=${+(numero)},complemento='${complemento}',cep='${cep}',bairro='${bairro}' where idEmpresa = ${+(idEmpresa)}`;
-	
-	console.log(instrucaoSql);
-	sequelize.query(instrucaoSql, {
-		model: Empresa
-	}).then(resultado => {
-		console.log(`Encontrados: ${resultado.length}`);
-		if (resultado.length == 1) {
-			sessoes.push(resultado[0].dataValues.login);
-			console.log('sessoes: ',sessoes);
-			res.json(resultado[0]);
-		} else if (resultado.length == 0) {
-			res.status(403).send('Login e/ou senha inválido(s)');
-		} else {
-			res.status(403).send('Mais de um usuário com o mesmo login e senha!');
-		}
-	}).catch(erro => {
-		console.error(erro);
-		res.status(500).send(erro.message);
-  	});
+    /* Update tabela empresa*/
+    router.put('/update', function (req, res, next) {
+
+    var idEmpresa = req.body.idEmpresa;
+    var nomeEmpresa = req.body.nomeEmpresa;
+    var CNPJ = req.body.CNPJ;
+    var cep = req.body.cep;
+    var bairro = req.body.bairro;
+    var logradouro = req.body.logradouro;
+    var cidade = req.body.cidade;
+    var numero = req.body.numero;
+    var complemento = req.body.complemento;
+    var loginEmpresa = req.body.loginEmpresa;
+    var senhaEmpresa = req.body.senhaEmpresa;
+    var telefone = req.body.telefone;
+    var email = req.body.email;
+    let instrucaoSql;
+
+    instrucaoSql = `update [dbo].[Empresa] set loginEmpresa = '${loginEmpresa}',senhaEmpresa='${senhaEmpresa}',nomeEmpresa='${nomeEmpresa}',CNPJ='${CNPJ}',telefone='${telefone}',email='${email}',logradouro='${logradouro}',cidade='${cidade}',numero=${+(numero)},complemento='${complemento}',cep='${cep}',bairro='${bairro}' where idEmpresa = ${+(idEmpresa)}`;
+
+    console.log(instrucaoSql);
+    sequelize.query(instrucaoSql, {
+        model: Empresa
+    }).then(resultado => {
+        console.log(`Encontrados: ${resultado.length}`);
+        if (resultado.length == 1) {
+            sessoes.push(resultado[0].dataValues.login);
+            console.log('sessoes: ', sessoes);
+            res.json(resultado[0]);
+        } else if (resultado.length == 0) {
+            res.status(403).send('Login e/ou senha inválido(s)');
+        } else {
+            res.status(403).send('Mais de um usuário com o mesmo login e senha!');
+        }
+    }).catch(erro => {
+        console.error(erro);
+        res.status(500).send(erro.message);
+    });
 });
+
 /* ROTA DELETAR */
 router.delete('/delete/:idUsuario', function (req, res, next) {
     console.log('Recuperando todas as publicações');
-  
+
     var idUsuario = req.params.idUsuario;
-  
+
     let instrucaoSql = `DELETE FROM [dbo].[Empresa] WHERE idEmpresa = ${idUsuario}`;
-  
+
     sequelize.query(instrucaoSql, {
-        model:  Empresa,
-        mapToModel: true
-    })
+            model: Empresa,
+            mapToModel: true
+        })
         .then(resultado => {
             console.log(`Encontrados: ${resultado.length}`);
             res.json(resultado);
@@ -107,59 +110,40 @@ router.delete('/delete/:idUsuario', function (req, res, next) {
             console.error(erro);
             res.status(500).send(erro.message);
         });
-  });
+});
 
 /* ROTA QUE RECUPERA AS PUBLICAÇÕES DE UM USUÁRIO PELO ID */
 router.get('/:idUsuario', function (req, res, next) {
-  console.log('Recuperando todas as publicações');
+    console.log('Recuperando todas as publicações');
 
-  var idUsuario = req.params.idUsuario;
+    var idUsuario = req.params.idUsuario;
 
-  let instrucaoSql = `select * from [dbo].[Empresa] inner join [dbo].[Responsavel] on idEmpresa = fkEmpresa where idEmpresa = ${idUsuario} and tipo = 'gestor'`;
+    let instrucaoSql = `select * from [dbo].[Empresa] inner join [dbo].[Responsavel] on idEmpresa = fkEmpresa where idEmpresa = ${idUsuario} and tipo = 'gestor'`;
 
-  sequelize.query(instrucaoSql, {
-      model: Gestao,
-      mapToModel: true
-  })
-      .then(resultado => {
-          console.log(`Encontrados: ${resultado.length}`);
-          res.json(resultado);
-      }).catch(erro => {
-          console.error(erro);
-          res.status(500).send(erro.message);
-      });
+    sequelize.query(instrucaoSql, {
+            model: Gestao,
+            mapToModel: true
+        })
+        .then(resultado => {
+            console.log(`Encontrados: ${resultado.length}`);
+            res.json(resultado);
+        }).catch(erro => {
+            console.error(erro);
+            res.status(500).send(erro.message);
+        });
 });
 
 /* ROTA QUE RECUPERA AS PUBLICAÇÕES DE UM USUÁRIO PELO ID */
 router.get('/sup/:idUsuario', function (req, res, next) {
 
-  var idUsuario = req.params.idUsuario;
-
-  let instrucaoSql = `select * from [dbo].[Empresa] inner join [dbo].[Responsavel] on idEmpresa = fkEmpresa where idEmpresa = ${idUsuario} and tipo = 'suporte'`;
-
-  sequelize.query(instrucaoSql, {
-      model: Gestao,
-      mapToModel: true
-  })
-      .then(resultado => {
-          console.log(`Encontrados: ${resultado.length}`);
-          res.json(resultado);
-      }).catch(erro => {
-          console.error(erro);
-          res.status(500).send(erro.message);
-      });
-});
-
-router.get('/empresa/:idUsuario', function (req, res, next) {
-
     var idUsuario = req.params.idUsuario;
-  
-    let instrucaoSql = `select * from [dbo].[Empresa]`;
-  
+
+    let instrucaoSql = `select * from [dbo].[Empresa] inner join [dbo].[Responsavel] on idEmpresa = fkEmpresa where idEmpresa = ${idUsuario} and tipo = 'suporte'`;
+
     sequelize.query(instrucaoSql, {
-        model: Empresa,
-        mapToModel: true
-    })
+            model: Gestao,
+            mapToModel: true
+        })
         .then(resultado => {
             console.log(`Encontrados: ${resultado.length}`);
             res.json(resultado);
@@ -167,5 +151,63 @@ router.get('/empresa/:idUsuario', function (req, res, next) {
             console.error(erro);
             res.status(500).send(erro.message);
         });
-  });
+});
+
+router.get('/empresa/:idUsuario', function (req, res, next) {
+
+    var idUsuario = req.params.idUsuario;
+
+    let instrucaoSql = `select * from [dbo].[Empresa]`;
+
+    sequelize.query(instrucaoSql, {
+            model: Empresa,
+            mapToModel: true
+        })
+        .then(resultado => {
+            console.log(`Encontrados: ${resultado.length}`);
+            res.json(resultado);
+        }).catch(erro => {
+            console.error(erro);
+            res.status(500).send(erro.message);
+        });
+});
 module.exports = router;
+
+/* Update tabela funcionario  */
+
+/* Update tabela */
+router.put('/updateresponsavel', function (req, res, next) {
+
+    var loginResponsavel = req.body.loginResponsavel;
+    var senhaResponsavel = req.body.senhaResponsavel;
+    var nomeResponsavel = req.body.nomeResponsavel;
+    var telefone = req.body.telefone;
+    var email = req.body.email;
+    var CPF = req.body.CPF;
+
+    instrucaoSql = `update [dbo].[Responsavel] set 
+    loginResponsavel = '${loginResponsavel}',
+    senhaResponsavel='${senhaResponsavel}',
+    nomeResponsavel='${nomeResponsavel}',
+    telefone='${telefone}',
+    CPF='${CPF}' WHERE idResponsavel = 10 `;
+
+    console.log(instrucaoSql);
+    sequelize.query(instrucaoSql, {
+        model: Funcionario
+    }).then(resultado => {
+        console.log(`Encontrados: ${resultado.length}`);
+        if (resultado.length == 1) {
+            sessoes.push(resultado[0].dataValues.login);
+            console.log('sessoes: ', sessoes);
+            res.json(resultado[0]);
+        } else if (resultado.length == 0) {
+            res.status(403).send('Login e/ou senha inválido(s)');
+        } else {
+            res.status(403).send('Mais de um usuário com o mesmo login e senha!');
+        }
+    }).catch(erro => {
+        console.error(erro);
+        res.status(500).send(erro.message);
+    });
+});

@@ -23,56 +23,53 @@
   </div>
 
   <main>
-    <form id="form_cadastro" method="post" onsubmit="return cadastrar()">
+    <form class="main-container" id="formulario_func" method="post">
 
       <div id="dadosEmpresa" class="formAcess">
         <h3>Dados funcionários:</h3>
         <div class="espaco"></div>
-        <select id="tipo" class="select" name="tipo">
-          <option value="">Escolha funcionário</option>
-          <option value="empresa">Gestor</option>
-          <option value="fastTech">Suporte</option>
-        </select>
         <label class="input-fild">
           <span>Name:</span>
-          <input type="text" id="nomeEmpresa" name="nomeEmpresa" class="input-padrao" placeholder="Nome e sobrenome"
-            required minlength="4" autofocus="autofocus">
+          <input type="text" id="nomeResponsavel" name="nomeResponsavel" class="input-padrao"
+            placeholder="Nome e sobrenome" required minlength="4" autofocus="autofocus">
           <div class="underline"></div>
         </label>
         <label class="input-fild">
           <span>Telefone:</span>
-          <input type="text" id="nomeEmpresa" name="nomeEmpresa" class="input-padrao" placeholder="Nome e sobrenome"
-            required minlength="4" autofocus="autofocus">
+          <input type="text" id="telefone" name="telefone" class="input-padrao" placeholder="Nome e sobrenome" required
+            minlength="4" autofocus="autofocus">
           <div class="underline"></div>
         </label>
         <label class="input-fild">
           <span>CPF:</span>
-          <input type="text" id="cnpj" name="cnpj" placeholder="Digite o cnpj">
+          <input type="text" id="CPF" name="CPF" class="input-padrao" placeholder="Nome e sobrenome" required
+            minlength="4" autofocus="autofocus">
           <div class="underline"></div>
         </label>
         <label class="input-fild">
-          <span>E-mail:</span>
-          <input type="text" id="bairro" name="bairro" placeholder="Digite o bairro">
+          <span>Login:</span>
+          <input type="text" id="loginResponsavel" name="loginResponsavel" placeholder="Digite login">
           <div class="underline"></div>
         </label>
         <label class="input-fild">
           <span>Senha:</span>
-          <input type="text" id="logradouro" name="logradouro" placeholder="Digite o logradouro">
+          <input type="text" id="senhaResponsavel" name="senhaResponsavel" placeholder="Digite o logradouro">
           <div class="underline"></div>
         </label>
     </form>
 
     <div class="botnsFuncoes">
-      <input type="submit" value="Atualizar">
+
       <a href="cadastro.html">
         <img src="../img/iconMaisEscuro.png" alt="" />
       </a>
       <span>Novo</span>
-      <a href="cadastro.html">
-        <img src="../img/salvarEscuro.png" alt="" />
-      </a>
 
+      <a>
+        <img src="../img/salvarEscuro.png" alt="" onclick="updateTabela()" />
+      </a>
       <span>Salvar</span>
+
       <a href="listaEmpresas.html">
         <img src="../img/cancelar.png" alt="" />
       </a>
@@ -83,3 +80,35 @@
 </body>
 
 </html>
+
+<script>
+
+  function preencher(){
+    let nome= document.getElementById('nomeResponsavel');
+    var data = sessionStorage.getItem('myCat');
+    nome.value =data
+  }
+
+  preencher()
+  
+  function updateTabela() {
+    var formulario = new URLSearchParams(new FormData(formulario_func));
+    console.log(formulario.toString());
+    console.log(formulario);
+    fetch("/gestor/updateresponsavel", {
+      method: "PUT",
+      body: formulario,
+    }).then((resposta) => {
+      if (resposta.ok) {
+        resposta.json().then((json) => {
+          console.log(json);
+        });
+      } else {
+        alert("[UPDATE] : Dados Atualizados !");
+
+        resposta.text().then((texto) => {});
+      }
+    });
+    return false;
+  }
+</script>

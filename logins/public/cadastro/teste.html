@@ -26,13 +26,21 @@
     </div>
 
     <main class="estiloForm">
-        
-            <div id="modal" class="modal slideDown">
-                <h1>Empresa Cadastrada com sucesso!</h1>
+        <div id="abrirModalInstrucao">
+            <div class="modal slideDown">
+                <a href="#fecharCom" class="fecharIns" onclick="fecharInstrucao()">x</a>
+                <h1>Empresa cadastrada com sucesso!</h1>
+                <img src="./img/check.gif" alt="">
                 <a href="./listaEmpresas.html">Vizualizar</a>
             </div>
-      
+        </div>
     </main>
 </body>
 
 </html>
+
+<script>
+    function fecharInstrucao() {
+        abrirModalInstrucao.style.display = 'none'
+    }
+</script>

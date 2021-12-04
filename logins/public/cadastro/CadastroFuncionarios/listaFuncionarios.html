@@ -67,18 +67,42 @@
 </html>
 
 <script>
+    let armazenadorGestor = [];
+
+    function selecionaLog(event) {
+        let indexGestor = +(event.target.alt);
+        event.preventDefault();
+        console.log("Pega dados", armazenadorGestor[indexGestor]);
+        salvarDadosGestor(armazenadorGestor[indexGestor]);
+        window.location.href = "./editarFunc.html"
+    }
+
+    function pegaGestor(dados) {
+        let dadosGestor = dados;
+        dadosGestor.forEach((gest) => {
+            armazenadorGestor.push(gest);
+        })
+    }
+
     function construirBalao(dadosBalao) {
+        let contador = -1;
         let container = document.querySelector(".listaGestor");
         dadosBalao.forEach((d) => {
+            contador++;
             console.log(d.nomeResponsavel, d.telefone);
             container.innerHTML += ` <li>
                     <h4 class="lado"><span>Nome: </span> <span>Telefone: </span> </h4>
                     <span class="menu">
-                        <a href="editarFunc.html"><img src="../img/iconEditarPreto.png" alt=""></a>
+                        <a ><img src="../img/iconEditarPreto.png" alt="${contador}" onclick="selecionaLog(event)"></a>
                     </span>
                     <h4><span>${d.nomeResponsavel}</span> <span>${(d.telefone).trim()}</span></h4>
                 </li>`
         })
+    }
+
+    function salvarDadosGestor(dados) {
+        console.log(dados, "bananinha");
+        sessionStorage.setItem('myCat', dados.nomeResponsavel);
     }
 
     function construirBalaoSup(dadosBalao) {
@@ -96,10 +120,12 @@
     }
 
     function obterListaGestor(idUsuario) {
+        
         fetch(`/gestor/${idUsuario}`)
             .then(resposta => {
                 if (resposta.ok) {
                     resposta.json().then(function (resposta) {
+                        pegaGestor(resposta);
                         construirBalao(resposta);
                         console.log("res", resposta)
                         // alert(JSON.stringify(resposta))

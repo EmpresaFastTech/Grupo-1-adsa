@@ -26,10 +26,15 @@
     </div>
 
     <main class="estiloForm">
-        <div id="modal" class="modal efeitoDesce">
-            <h1>EMPRESA CADASTRADA</h1>
-           
-            <a href="./listaEmpresas.html">Vai ver o bichinho la cadastrado kkkk</a>
+        <div id="modal" >
+            <div id="abrirModalInstrucao">
+                <div class="modal slideDown">
+                    <a href="#fecharCom" class="fecharIns" onclick="fecharInstrucao()">x</a>
+                    <h1>Empresa cadastrada com sucesso!</h1>
+                    <img src="../img/check.gif" alt="">
+                    <a href="./listaEmpresas.html">Vizualizar</a>
+                </div>
+            </div>
         </div>
         <form id="form_cadastro" class="formEmpresa" onsubmit="return cadastrar()">
             <div id="dadosEmpresa" class="formAcess">
@@ -172,5 +177,9 @@
             }
         });
         return false;
+    }
+
+    function fecharInstrucao() {
+        abrirModalInstrucao.style.display = 'none'
     }
 </script>
