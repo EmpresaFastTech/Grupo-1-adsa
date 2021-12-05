@@ -26,6 +26,7 @@
 
     <main class="banner">
 
+
         <div class="containerList">
             <ul class="lista listaGestor">
                 <h3>Gestores cadastrados</h3>
@@ -42,6 +43,7 @@
         </div>
 
         <div class="containerList">
+
             <ul class="lista listaSup">
                 <h3>Suporte cadastrados</h3>
                 <div class="espaco"></div>
@@ -68,6 +70,7 @@
 
 <script>
     let armazenadorGestor = [];
+    let armazenadorSup = [];
 
     function selecionaLog(event) {
         let indexGestor = +(event.target.alt);
@@ -77,10 +80,24 @@
         window.location.href = "./editarFunc.html"
     }
 
+    function selecionaLogSup(event) {
+        event.preventDefault();
+        let indexGestor = +(event.target.alt);
+        console.log("Pega dados", armazenadorSup[indexGestor]);
+        salvarDadosSuporte(armazenadorSup[indexGestor]);
+        window.location.href = "./editarFunc.html"
+    }
+
     function pegaGestor(dados) {
         let dadosGestor = dados;
         dadosGestor.forEach((gest) => {
             armazenadorGestor.push(gest);
+        })
+    }
+    function pegaSuporte(dados) {
+        let dadosSuporte = dados;
+        dadosSuporte.forEach((gest) => {
+            armazenadorSup.push(gest);
         })
     }
 
@@ -90,37 +107,104 @@
         dadosBalao.forEach((d) => {
             contador++;
             console.log(d.nomeResponsavel, d.telefone);
-            container.innerHTML += ` <li>
-                    <h4 class="lado"><span>Nome: </span> <span>Telefone: </span> </h4>
-                    <span class="menu">
-                        <a ><img src="../img/iconEditarPreto.png" alt="${contador}" onclick="selecionaLog(event)"></a>
-                    </span>
-                    <h4><span>${d.nomeResponsavel}</span> <span>${(d.telefone).trim()}</span></h4>
-                </li>`
+            container.innerHTML += ` <li class="listinha">
+                <div>
+                    <p>Nome</p>
+                    <p>${d.nomeResponsavel}</p>
+                </div>
+                <div>
+                    <p>Telefone</p>
+                    <p>${(d.telefone).trim()}</p>
+                </div>
+                <div id="imagensff">
+                <img src="../img/iconEditarPreto.png" alt="${contador}" onclick="selecionaLog(event)">
+                 <img src="../img/excluir.png" alt="${contador}" onclick="excluir(event)">
+                </div>
+            </li>`
         })
     }
 
     function salvarDadosGestor(dados) {
         console.log(dados, "bananinha");
-        sessionStorage.setItem('myCat', dados.nomeResponsavel);
+        sessionStorage.setItem('nomeFuncionario', dados.nomeResponsavel);
+        sessionStorage.setItem('CPF', dados.CPF);
+        sessionStorage.setItem('telefone', dados.telefone);
+        sessionStorage.setItem('loginResponsavel', dados.loginResponsavel);
+        sessionStorage.setItem('senhaResponsavel', dados.senhaResponsavel);
+        sessionStorage.setItem('idResponsavel', dados.idResponsavel);
+
+    }
+
+    function salvarDadosSuporte(dados) {
+        console.log(dados, "bananinha");
+        sessionStorage.setItem('nomeFuncionario', dados.nomeResponsavel);
+        sessionStorage.setItem('CPF', dados.CPF);
+        sessionStorage.setItem('telefone', dados.telefone);
+        sessionStorage.setItem('loginResponsavel', dados.loginResponsavel);
+        sessionStorage.setItem('senhaResponsavel', dados.senhaResponsavel);
+        sessionStorage.setItem('idResponsavel', dados.idResponsavel);
+
     }
 
     function construirBalaoSup(dadosBalao) {
         let container = document.querySelector(".listaSup");
+        let contador = -1;
         dadosBalao.forEach((d) => {
+            contador++;
             console.log(d.nomeResponsavel, d.telefone);
-            container.innerHTML += ` <li>
-                    <h4 class="lado"><span>Nome: </span> <span>Telefone: </span> </h4>
-                    <span class="menu">
-                        <a href="editarFunc.html"><img src="../img/iconEditarPreto.png" alt=""></a>
-                    </span>
-                    <h4><span>${d.nomeResponsavel}</span> <span>${(d.telefone).trim()}</span></h4>
-                </li>`
+            container.innerHTML += `<li class="listinha">
+                <div>
+                    <p>Nome</p>
+                    <p>${d.nomeResponsavel}</p>
+                </div>
+                <div>
+                    <p>Telefone</p>
+                    <p>${(d.telefone).trim()}</p>
+                </div>
+                <div id="imagensff">
+                <img src="../img/iconEditarPreto.png" alt="${contador}" onclick="selecionaLogSup(event)">
+                 <img src="../img/excluir.png" alt="${contador}" onclick="excluir2(event)"">
+                </div>
+            </li>`
         })
     }
+    function excluir(event) {
+        event.preventDefault();
+        let indexGestor = +(event.target.alt);
+        let itemExcluido = armazenadorGestor[indexGestor].idResponsavel;
+        console.log("Excluir: ", itemExcluido);
+        deletarUsuario(itemExcluido);
+    }
+    function excluir2(event) {
+        event.preventDefault();
+        let indexSuporte = +(event.target.alt);
+        let itemExcluido = armazenadorSup[indexSuporte].idResponsavel;
+        console.log("Excluir: ", itemExcluido);
+        deletarUsuario(itemExcluido);
+    }
+    function deletarUsuario(idUsuario) {
+        fetch(`/gestor/deletegest/${idUsuario}`, {
+            method: "DELETE"
+        })
+            .then(resposta => {
+                if (resposta.ok) {
+                    resposta.json().then(function (resposta) {
 
+                        alert("deletado!");
+                        location.reload();
+                        // alert(JSON.stringify(resposta))
+                    });
+                } else {
+
+                    console.error('Nenhum dado encontrado ou erro na API');
+                }
+            })
+            .catch(function (error) {
+                console.error(`Erro na obtenção das publicações do usuário: ${error.message}`);
+            });
+    }
     function obterListaGestor(idUsuario) {
-        
+
         fetch(`/gestor/${idUsuario}`)
             .then(resposta => {
                 if (resposta.ok) {
@@ -146,6 +230,7 @@
                 if (resposta.ok) {
                     resposta.json().then(function (resposta) {
                         construirBalaoSup(resposta);
+                        pegaSuporte(resposta);
                         console.log("res", resposta)
                         // alert(JSON.stringify(resposta))
                     });

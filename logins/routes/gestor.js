@@ -111,6 +111,23 @@ router.delete('/delete/:idUsuario', function (req, res, next) {
             res.status(500).send(erro.message);
         });
 });
+/* ROTA DELETAR GESTOR */
+router.delete('/deletegest/:idUsuario', function (req, res, next) {
+    console.log('Recuperando todas as publicações');
+    var idUsuario = req.params.idUsuario;
+    let instrucaoSql = `DELETE FROM responsavel WHERE idResponsavel = ${idUsuario}`;
+    sequelize.query(instrucaoSql, {
+            model: Gestao,
+            mapToModel: true
+        })
+        .then(resultado => {
+            console.log(`Encontrados: ${resultado.length}`);
+            res.json(resultado);
+        }).catch(erro => {
+            console.error(erro);
+            res.status(500).send(erro.message);
+        });
+});
 
 /* ROTA QUE RECUPERA AS PUBLICAÇÕES DE UM USUÁRIO PELO ID */
 router.get('/:idUsuario', function (req, res, next) {
@@ -176,8 +193,8 @@ module.exports = router;
 /* Update tabela funcionario  */
 
 /* Update tabela */
-router.put('/updateresponsavel', function (req, res, next) {
-
+router.put('/updateresponsavel/:idUsuario', function (req, res, next) {
+    var idUsuario = req.params.idUsuario;
     var loginResponsavel = req.body.loginResponsavel;
     var senhaResponsavel = req.body.senhaResponsavel;
     var nomeResponsavel = req.body.nomeResponsavel;
@@ -190,7 +207,7 @@ router.put('/updateresponsavel', function (req, res, next) {
     senhaResponsavel='${senhaResponsavel}',
     nomeResponsavel='${nomeResponsavel}',
     telefone='${telefone}',
-    CPF='${CPF}' WHERE idResponsavel = 10 `;
+    CPF='${CPF}' WHERE idResponsavel = ${idUsuario} `;
 
     console.log(instrucaoSql);
     sequelize.query(instrucaoSql, {

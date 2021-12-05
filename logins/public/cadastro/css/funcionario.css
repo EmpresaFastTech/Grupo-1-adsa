@@ -459,5 +459,34 @@ h4 span {
   font-weight: bold
 }
 
+.listinha{
+  display: flex !important;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.listinha div{
+  margin-right: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+ 
+  width: 130px;
+}
+.listinha div img {
+  height: 35px !important;
+  width:  35px !important;
+
+  margin: 0 !important;
+  padding:  0 !important;
+}
+#imagensff{
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+ 
+ width: 100px;
+}
 
 

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="dash.css">
+  <title>Dash Gestor</title>
+</head>
+
+<body>
+  <section class="containerDash">
+
+    <div class="containerMenu">
+
+      <nav class="containerNav">
+        <button class="close">X</button>
+        <div><img src="./img/logoBranco.png" alt="#"></div>
+        <h2>Dashboard</h2>
+        <ul class="lista_menu_geral">
+
+          <li><a href="./gestorDash.html">Sair</a></li>
+
+        </ul>
+      </nav>
+    </div>
+    <section class="containerInfo">
+      <div class="cabecalho">
+        <a class="mphone" href="#">
+          <div></div>
+        </a>
+        <div style="opacity: 0;" class="pesquisa">
+          <img src="./img/lupa2.png" alt="#">
+          <input type="text" placeholder="Pesquisar...">
+        </div>
+        <div class="gestorPerfil">
+          <img src="./img/perfilGestor.png" alt="#">
+          <div>
+            <h4 id="nomezinho"></h4>
+            <p>Gestor</p>
+            <div class="box_perfil">
+              <p> <a href="#">Configurações</a> </p>
+              <p><a href="#">Sairr</a></p>
+
+            </div>
+          </div>
+
+        </div>
+
+
+      </div>
+      <div class="gdb">
+        <div class="hello">
+
+          <h3>
+            <p> Equipamentos Equipe:
+            </p>
+
+          </h3>
+          <button id="criarq">Adicionar Equipamento</button>
+        </div>
+        <br>
+        <div class="dashinfoControle">
+          <h3>
+            <p> <span>Nome:</span> ID:<span>----</span>SO: <span>----</span> RAM: <span>----</span> HD: <span>----</span> <img id="editarq" src="../cadastro/img/iconEditarPreto.png" alt="#">
+              <img id="excluirq" src="../cadastro/img/excluir.png" alt="#">
+            </p>
+          </h3>
+        </div>
+        <div class="dashinfoControle">
+          <h3>
+            <p> <span>Nome:</span> ID:<span>----</span>SO: <span>----</span> RAM: <span>----</span> HD: <span>----</span> <img id="editarq" src="../cadastro/img/iconEditarPreto.png" alt="#">
+              <img id="excluirq" src="../cadastro/img/excluir.png" alt="#">
+            </p>
+          </h3>
+        </div>
+        <div class="dashinfoControle">
+          <h3>
+            <p> <span>Nome:</span> ID:<span>----</span>SO: <span>----</span> RAM: <span>----</span> HD: <span>----</span> <img id="editarq" src="../cadastro/img/iconEditarPreto.png" alt="#">
+              <img id="excluirq" src="../cadastro/img/excluir.png" alt="#">
+            </p>
+          </h3>
+        </div>
+        <div class="dashinfoControle">
+          <h3>
+            <p> <span>Nome:</span> ID:<span>----</span>SO: <span>----</span> RAM: <span>----</span> HD: <span>----</span> <img id="editarq" src="../cadastro/img/iconEditarPreto.png" alt="#">
+              <img id="excluirq" src="../cadastro/img/excluir.png" alt="#">
+            </p>
+          </h3>
+        </div>
+        <div class="dashinfoControle">
+          <h3>
+            <p> <span>Nome:</span> ID:<span>----</span>SO: <span>----</span> RAM: <span>----</span> HD: <span>----</span> <img id="editarq" src="../cadastro/img/iconEditarPreto.png" alt="#">
+              <img id="excluirq" src="../cadastro/img/excluir.png" alt="#">
+            </p>
+          </h3>
+        </div>
+        <div class="dashinfoControle">
+          <h3>
+            <p> <span>Nome:</span> ID:<span>----</span>SO: <span>----</span> RAM: <span>----</span> HD: <span>----</span> <img id="editarq" src="../cadastro/img/iconEditarPreto.png" alt="#">
+              <img id="excluirq" src="../cadastro/img/excluir.png" alt="#">
+            </p>
+          </h3>
+        </div>
+
+        <div class="dashinfoControle">
+          <h3>
+            <p> <span>Nome:</span> ID:<span>----</span>SO: <span>----</span> RAM: <span>----</span> HD: <span>----</span> <img id="editarq" src="../cadastro/img/iconEditarPreto.png" alt="#">
+              <img id="excluirq" src="../cadastro/img/excluir.png" alt="#">
+            </p>
+          </h3>
+        </div>
+
+        <div class="dashinfoControle">
+          <h3>
+            <p> <span>Nome:</span> ID:<span>----</span>SO: <span>----</span> RAM: <span>----</span> HD: <span>----</span> <img id="editarq" src="../cadastro/img/iconEditarPreto.png" alt="#">
+              <img id="excluirq" src="../cadastro/img/excluir.png" alt="#">
+            </p>
+          </h3>
+        </div>
+
+        <div class="dashinfoControle">
+          <h3>
+            <p> <span>Nome:</span> ID:<span>----</span>SO: <span>----</span> RAM: <span>----</span> HD: <span>----</span> <img id="editarq" src="../cadastro/img/iconEditarPreto.png" alt="#">
+              <img id="excluirq" src="../cadastro/img/excluir.png" alt="#">
+            </p>
+          </h3>
+        </div>
+
+      </div>
+
+    </section>
+  </section>
+
+  <div class="updateEqp" id="modalCriar">
+    <a href="">X</a>
+    <span>Maquina Editada: ID</span>
+    <span>Responsavel Atual: Res</span>
+    <form>
+      <input type="text" placeholder="[ID:] - Usuario Responsavel" name="fkUsuario">
+      <input type="button" value="Atualizar">
+    </form>
+  </div>
+
+  <div class="createEqp" id="modalCriar">
+    <a id="closeq" href="">X</a>
+    <form>
+      <input type="text" placeholder="NumeroSerie" name="numeroSerie">
+      <input type="text" placeholder="CPU" name="CPU">
+      <input type="text" placeholder="RAM" name="RAM">
+      <input type="text" placeholder="HD" name="HD">
+      <input type="text" placeholder="fkFuncionario" name="fkFuncionario">
+      <input type="text" name="SO" placeholder="Sistema Operacional">
+      <input style="display: none;" type="datetime" name="data">
+      <input style="display: none;" type="text" name="statusEquip">
+      <input id="adad" type="button" value="Registrar">
+    </form>
+  </div>
+
+</body>
+
+<script>
+  function attNome() {
+    let nome = document.querySelector("#nomezinho");
+    nome.innerText = sessionStorage.getItem("nome")
+  }
+  attNome();
+
+  function addEvent() {
+    const editarq = document.querySelectorAll("#editarq");
+    const modal = document.querySelectorAll("#modalCriar");
+    const criarq = document.querySelector("#criarq");
+    const updateEqp = document.querySelector(".updateEqp");
+    const createEqp = document.querySelector(".createEqp");
+    const closeq = document.querySelector("#closeq");
+    editarq.forEach((edit) => {
+      edit.addEventListener("click", () => {
+        updateEqp.classList.add("ativo");
+      })
+    });
+    closeq.addEventListener("click", () => {
+      modal.classList.add("close")
+    })
+    criarq.addEventListener("click", () => {
+      createEqp.classList.add("ativo");
+    })
+  }
+  addEvent()
+</script>
+
+</html>

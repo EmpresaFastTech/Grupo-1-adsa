@@ -30,20 +30,17 @@
         <div class="espaco"></div>
         <label class="input-fild">
           <span>Name:</span>
-          <input type="text" id="nomeResponsavel" name="nomeResponsavel" class="input-padrao"
-            placeholder="Nome e sobrenome" required minlength="4" autofocus="autofocus">
+          <input type="text" id="nomeResponsavel" name="nomeResponsavel" class="input-padrao" placeholder="Nome e sobrenome" required minlength="4" autofocus="autofocus">
           <div class="underline"></div>
         </label>
         <label class="input-fild">
           <span>Telefone:</span>
-          <input type="text" id="telefone" name="telefone" class="input-padrao" placeholder="Nome e sobrenome" required
-            minlength="4" autofocus="autofocus">
+          <input type="text" id="telefone" name="telefone" class="input-padrao" placeholder="Nome e sobrenome" required minlength="4" autofocus="autofocus">
           <div class="underline"></div>
         </label>
         <label class="input-fild">
           <span>CPF:</span>
-          <input type="text" id="CPF" name="CPF" class="input-padrao" placeholder="Nome e sobrenome" required
-            minlength="4" autofocus="autofocus">
+          <input type="text" id="CPF" name="CPF" class="input-padrao" placeholder="Nome e sobrenome" required minlength="4" autofocus="autofocus">
           <div class="underline"></div>
         </label>
         <label class="input-fild">
@@ -83,19 +80,36 @@
 
 <script>
 
-  function preencher(){
-    let nome= document.getElementById('nomeResponsavel');
-    var data = sessionStorage.getItem('myCat');
-    nome.value =data
+  function preencher() {
+    let nome = document.getElementById('nomeResponsavel');
+    let CPF = document.getElementById('CPF');
+    let loginResponsavel = document.getElementById('loginResponsavel');
+    let senhaResponsavel = document.getElementById('senhaResponsavel');
+    let telefone = document.getElementById('telefone');
+
+    var telefone1 = sessionStorage.getItem('telefone');
+    var CPF1 = sessionStorage.getItem('CPF');
+    var nome1 = sessionStorage.getItem('nomeFuncionario');
+    var loginResponsavel1 = sessionStorage.getItem('loginResponsavel');
+    var senhaResponsavel1 = sessionStorage.getItem('senhaResponsavel');
+    var telefone1 = sessionStorage.getItem('telefone');
+
+    nome.value = nome1;
+    telefone.value = telefone1;
+    loginResponsavel.value = loginResponsavel1;
+    senhaResponsavel.value = senhaResponsavel1;
+    CPF.value = CPF1;
+
   }
 
   preencher()
-  
+
   function updateTabela() {
+    let idUsuario = +(sessionStorage.getItem('idResponsavel'));
     var formulario = new URLSearchParams(new FormData(formulario_func));
     console.log(formulario.toString());
     console.log(formulario);
-    fetch("/gestor/updateresponsavel", {
+    fetch(`/gestor/updateresponsavel/${idUsuario}`, {
       method: "PUT",
       body: formulario,
     }).then((resposta) => {
@@ -106,7 +120,7 @@
       } else {
         alert("[UPDATE] : Dados Atualizados !");
 
-        resposta.text().then((texto) => {});
+        resposta.text().then((texto) => { });
       }
     });
     return false;

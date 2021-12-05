@@ -777,3 +777,134 @@ ul {
 #emailv{
   width: 100% !important;
 }
+.dashinfoControle{
+  margin-bottom: 5px;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 10px;
+  border-radius:5px;
+ width: 800px;
+}
+.dashinfoControle img{
+  cursor: pointer;
+  height:  25px;
+  width: 25px;
+}
+.dashinfoControle h3{
+
+  font-size: 14px;
+  font-weight: 700;
+  width: 100% !important;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.dashinfoControle h3 p {
+  display: flex;
+  justify-content: space-between;
+  
+}
+.dashinfoControle h3 p span {
+
+width: 110px;
+}
+.gdb{
+  padding: 0px 10px;
+  height: 400px;
+  width: 103%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.hello{
+  background: linear-gradient(
+158deg, rgba(158, 97, 252, 1) 0%, rgba(44, 49, 182, 1) 100%);
+ color: whitesmoke;
+ padding: 5px;
+ 
+ border-radius: 10px;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+}
+
+.hello button{
+  transition: .3s;
+background-color: rgb(202, 109, 47);
+border-style: none;
+border: 2px solid #fc3f3f;
+border-radius: 5px;
+color: rgb(253, 253, 252);
+padding: 5px;
+cursor: pointer;
+}
+.hello button:hover{
+  background-color: #333;
+  color: whitesmoke;
+  border: 2px solid #fc3f3f00;
+}
+#modalCriar a{
+  color: #fff;
+  font-weight: 800;
+}
+#modalCriar.close{
+  display: none;
+}
+#modalCriar{
+  height: 500px;
+  width: 100%;
+  background-color: rgba(128, 0, 128, 0.836);
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+ justify-content: center
+}
+
+#modalCriar span{
+  color:  white;
+  background-color: tomato;
+  border-radius: 10px;
+  padding: 2px;
+  margin: 5px;
+}
+#modalCriar form{  background-color: rgb(128, 0, 128);
+   border:  5px solid #fff;
+   border-radius: 5px;
+  display: flex;
+ width: 400px;
+  flex-direction: column;
+  padding: 10px;
+}
+#modalCriar form input {
+  margin: 5px;
+  height: 40px;
+  background-color: transparent;
+  border:  2px solid #fff;
+  color: white !important;
+  padding-left: 5px;
+  border-radius: 4px;
+}
+#modalCriar form input::placeholder{
+  color: white;
+}
+#adad{
+  transition: .3s;
+  cursor: pointer;
+}
+#adad:hover{
+  background-color: tomato;
+  color: white;
+}
+
+.updateEqp{
+  display: none !important;
+}
+.createEqp{
+  display: none !important;
+}
+
+.updateEqp.ativo{
+  display: inherit !important;
+}
+.createEqp.ativo{
+  display:inherit !important;
+}
