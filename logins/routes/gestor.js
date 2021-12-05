@@ -2,8 +2,9 @@ var express = require('express');
 var router = express.Router();
 var sequelize = require('../models').sequelize;
 var Gestao = require('../models').Gestao;
-var Funcionario = require('../models').Funcionario;
+var Publicacao = require('../models').Publicacao;
 var Empresa = require('../models').Empresa;
+var Equipamento = require('../models').Equipamento;
 
 
 /* ROTA PARA CADASTRAR FUNCIONARIO */
@@ -90,7 +91,32 @@ router.post('/cadastrar', function (req, res, next) {
         res.status(500).send(erro.message);
     });
 });
+/* -------------------------- */
+router.put('/updateeq', function (req, res, next) {
+    var fkFuncionario = req.body.fkFuncionario;
+    var funcionarioAntigo = req.body.idFuncionario;
+    let instrucaoSql;
 
+    instrucaoSql = `update [dbo].[Equipamento] set fkFuncionario = ${fkFuncionario} where fkFuncionario=${funcionarioAntigo}`;
+
+    sequelize.query(instrucaoSql, {
+        model: Equipamento
+    }).then(resultado => {
+        console.log(`Encontrados: ${resultado.length}`);
+        if (resultado.length == 1) {
+            sessoes.push(resultado[0].dataValues.login);
+            console.log('sessoes: ', sessoes);
+            res.json(resultado[0]);
+        } else if (resultado.length == 0) {
+            res.status(403).send('Login e/ou senha inválido(s)');
+        } else {
+            res.status(403).send('Mais de um usuário com o mesmo login e senha!');
+        }
+    }).catch(erro => {
+        console.error(erro);
+        res.status(500).send(erro.message);
+    });
+});
 /* ROTA DELETAR */
 router.delete('/delete/:idUsuario', function (req, res, next) {
     console.log('Recuperando todas as publicações');
@@ -208,8 +234,28 @@ router.get('/empresa/:idUsuario', function (req, res, next) {
             res.status(500).send(erro.message);
         });
 });
-module.exports = router;
 
+/* ----------------------------------------------------------- */
+
+router.get('/disponivel/:idUsuario', function (req, res, next) {
+    console.log('Recuperando todas as publicações');
+
+    var idUsuario = req.params.idUsuario;
+
+    let instrucaoSql = `select * from [dbo].[Funcionario] where fkResponsavel =${idUsuario} `;
+
+    sequelize.query(instrucaoSql, {
+        model: Publicacao,
+        mapToModel: true
+    })
+        .then(resultado => {
+            console.log(`Encontrados: ${resultado.length}`);
+            res.json(resultado);
+        }).catch(erro => {
+            console.error(erro);
+            res.status(500).send(erro.message);
+        });
+});
 /* Update tabela funcionario  */
 
 /* Update tabela */
@@ -231,7 +277,7 @@ router.put('/updateresponsavel/:idUsuario', function (req, res, next) {
 
     console.log(instrucaoSql);
     sequelize.query(instrucaoSql, {
-        model: Funcionario
+        model: Gestao
     }).then(resultado => {
         console.log(`Encontrados: ${resultado.length}`);
         if (resultado.length == 1) {
@@ -248,3 +294,24 @@ router.put('/updateresponsavel/:idUsuario', function (req, res, next) {
         res.status(500).send(erro.message);
     });
 });
+
+router.post('/cadastrarequipamento', function (req, res, next) {
+    Equipamento.create({
+        numeroSerie: req.body.numeroSerie,
+        CPU: req.body.CPU,
+        RAM: req.body.RAM,
+        HD: req.body.HD,
+        fkFuncionario: req.body.fkFuncionario,
+        SO: req.body.SO,
+        data: req.body.data,
+        statusEquip: req.body.statusEquip
+    }).then(resultado => {
+        console.log(`Registro criado: ${resultado}`)
+        res.send(resultado);
+    }).catch(erro => {
+        console.error(erro);
+        res.status(500).send(erro.message);
+    });
+});
+
+module.exports = router;

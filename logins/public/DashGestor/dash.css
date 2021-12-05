@@ -908,3 +908,20 @@ cursor: pointer;
 .createEqp.ativo{
   display:inherit !important;
 }
+
+#fkFuncionario{
+  margin: 5px;
+  height: 40px;
+  background-color: transparent;
+  border:  2px solid #fff;
+  color: white !important;
+  padding-left: 5px;
+  border-radius: 4px;
+}
+#fkFuncionario option{
+  background-color:  purple;
+  color: white !important;
+}
+#tt{
+  cursor: pointer;
+}

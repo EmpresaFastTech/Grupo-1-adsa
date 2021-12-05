@@ -122,4 +122,6 @@ router.get('/advertencia/:idUsuario', function (req, res, next) {
         });
 });
 
+
+
 module.exports = router;
