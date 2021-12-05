@@ -170,6 +170,26 @@ router.get('/sup/:idUsuario', function (req, res, next) {
         });
 });
 
+/* ROTA QUE RECUPERA AS PUBLICAÇÕES DE UM USUÁRIO PELO ID */
+router.get('/equipamentos/:idUsuario', function (req, res, next) {
+
+    var idUsuario = req.params.idUsuario;
+
+    let instrucaoSql = `select * from [dbo].[Equipamento] inner join [dbo].[Funcionario] on fkFuncionario = idFuncionario inner join [dbo].[Responsavel] on fkResponsavel = idResponsavel where idResponsavel = ${idUsuario}`;
+
+    sequelize.query(instrucaoSql, {
+            model: Gestao,
+            mapToModel: true
+        })
+        .then(resultado => {
+            console.log(`Encontrados: ${resultado.length}`);
+            res.json(resultado);
+        }).catch(erro => {
+            console.error(erro);
+            res.status(500).send(erro.message);
+        });
+});
+/* ----------------------------------------------------------- */
 router.get('/empresa/:idUsuario', function (req, res, next) {
 
     var idUsuario = req.params.idUsuario;

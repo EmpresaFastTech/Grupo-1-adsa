@@ -61,72 +61,8 @@
           <button id="criarq">Adicionar Equipamento</button>
         </div>
         <br>
-        <div class="dashinfoControle">
-          <h3>
-            <p> <span>Nome:</span> ID:<span>----</span>SO: <span>----</span> RAM: <span>----</span> HD: <span>----</span> <img id="editarq" src="../cadastro/img/iconEditarPreto.png" alt="#">
-              <img id="excluirq" src="../cadastro/img/excluir.png" alt="#">
-            </p>
-          </h3>
-        </div>
-        <div class="dashinfoControle">
-          <h3>
-            <p> <span>Nome:</span> ID:<span>----</span>SO: <span>----</span> RAM: <span>----</span> HD: <span>----</span> <img id="editarq" src="../cadastro/img/iconEditarPreto.png" alt="#">
-              <img id="excluirq" src="../cadastro/img/excluir.png" alt="#">
-            </p>
-          </h3>
-        </div>
-        <div class="dashinfoControle">
-          <h3>
-            <p> <span>Nome:</span> ID:<span>----</span>SO: <span>----</span> RAM: <span>----</span> HD: <span>----</span> <img id="editarq" src="../cadastro/img/iconEditarPreto.png" alt="#">
-              <img id="excluirq" src="../cadastro/img/excluir.png" alt="#">
-            </p>
-          </h3>
-        </div>
-        <div class="dashinfoControle">
-          <h3>
-            <p> <span>Nome:</span> ID:<span>----</span>SO: <span>----</span> RAM: <span>----</span> HD: <span>----</span> <img id="editarq" src="../cadastro/img/iconEditarPreto.png" alt="#">
-              <img id="excluirq" src="../cadastro/img/excluir.png" alt="#">
-            </p>
-          </h3>
-        </div>
-        <div class="dashinfoControle">
-          <h3>
-            <p> <span>Nome:</span> ID:<span>----</span>SO: <span>----</span> RAM: <span>----</span> HD: <span>----</span> <img id="editarq" src="../cadastro/img/iconEditarPreto.png" alt="#">
-              <img id="excluirq" src="../cadastro/img/excluir.png" alt="#">
-            </p>
-          </h3>
-        </div>
-        <div class="dashinfoControle">
-          <h3>
-            <p> <span>Nome:</span> ID:<span>----</span>SO: <span>----</span> RAM: <span>----</span> HD: <span>----</span> <img id="editarq" src="../cadastro/img/iconEditarPreto.png" alt="#">
-              <img id="excluirq" src="../cadastro/img/excluir.png" alt="#">
-            </p>
-          </h3>
-        </div>
 
-        <div class="dashinfoControle">
-          <h3>
-            <p> <span>Nome:</span> ID:<span>----</span>SO: <span>----</span> RAM: <span>----</span> HD: <span>----</span> <img id="editarq" src="../cadastro/img/iconEditarPreto.png" alt="#">
-              <img id="excluirq" src="../cadastro/img/excluir.png" alt="#">
-            </p>
-          </h3>
-        </div>
 
-        <div class="dashinfoControle">
-          <h3>
-            <p> <span>Nome:</span> ID:<span>----</span>SO: <span>----</span> RAM: <span>----</span> HD: <span>----</span> <img id="editarq" src="../cadastro/img/iconEditarPreto.png" alt="#">
-              <img id="excluirq" src="../cadastro/img/excluir.png" alt="#">
-            </p>
-          </h3>
-        </div>
-
-        <div class="dashinfoControle">
-          <h3>
-            <p> <span>Nome:</span> ID:<span>----</span>SO: <span>----</span> RAM: <span>----</span> HD: <span>----</span> <img id="editarq" src="../cadastro/img/iconEditarPreto.png" alt="#">
-              <img id="excluirq" src="../cadastro/img/excluir.png" alt="#">
-            </p>
-          </h3>
-        </div>
 
       </div>
 
@@ -159,34 +95,74 @@
   </div>
 
 </body>
+<script>
+  /* ROTA PARA EQUIPAMENTOS*/
+  function criarBalao(dados) {
+    const data = dados;
+    const container = document.querySelector(".gdb");
 
+    data.forEach((dado) => {
+      container.innerHTML += `
+      <div class="dashinfoControle">
+          <h3>
+            <p> <span> ${dado.nomeFuncionario}:  </span> Maquina:<span>${dado.idEquipamento}</span>SO: <span>${dado.SO}</span> RAM: <span>${dado.RAM}</span> HD: <span>${dado.HD}</span> <img id="editarq" src="../cadastro/img/iconEditarPreto.png" alt="#">
+              <img id="excluirq" src="../cadastro/img/excluir.png" alt="#">
+            </p>
+          </h3>
+        </div>`;
+    });
+  }
+  function obterPublicacoesPorUsuario(idUsuario) {
+    fetch(`/gestor/equipamentos/${idUsuario}`)
+      .then(resposta => {
+        if (resposta.ok) {
+          resposta.json().then(function (resposta) {
+
+            criarBalao(resposta)
+            // alert(JSON.stringify(resposta))
+          });
+        } else {
+          console.error('Nenhum dado encontrado ou erro na API');
+        }
+      })
+      .catch(function (error) {
+        console.error(`Erro na obtenção das publicações do usuário: ${error.message}`);
+      });
+  }
+
+  const idGest = +sessionStorage.id;
+  obterPublicacoesPorUsuario(idGest);
+
+</script>
 <script>
   function attNome() {
     let nome = document.querySelector("#nomezinho");
     nome.innerText = sessionStorage.getItem("nome")
   }
   attNome();
-
-  function addEvent() {
-    const editarq = document.querySelectorAll("#editarq");
-    const modal = document.querySelectorAll("#modalCriar");
-    const criarq = document.querySelector("#criarq");
-    const updateEqp = document.querySelector(".updateEqp");
-    const createEqp = document.querySelector(".createEqp");
-    const closeq = document.querySelector("#closeq");
-    editarq.forEach((edit) => {
-      edit.addEventListener("click", () => {
-        updateEqp.classList.add("ativo");
+  setInterval(() => {
+    function addEvent() {
+      const editarq = document.querySelectorAll("#editarq");
+      const modal = document.querySelectorAll("#modalCriar");
+      const criarq = document.querySelector("#criarq");
+      const updateEqp = document.querySelector(".updateEqp");
+      const createEqp = document.querySelector(".createEqp");
+      const closeq = document.querySelector("#closeq");
+      editarq.forEach((edit) => {
+        edit.addEventListener("click", () => {
+          updateEqp.classList.add("ativo");
+        })
+      });
+      closeq.addEventListener("click", () => {
+        modal.classList.add("close")
       })
-    });
-    closeq.addEventListener("click", () => {
-      modal.classList.add("close")
-    })
-    criarq.addEventListener("click", () => {
-      createEqp.classList.add("ativo");
-    })
-  }
-  addEvent()
+      criarq.addEventListener("click", () => {
+        createEqp.classList.add("ativo");
+      })
+    }
+    addEvent()
+  }, 100);
+
 </script>
 
 </html>
