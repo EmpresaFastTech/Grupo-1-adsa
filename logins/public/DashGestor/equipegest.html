@@ -16,15 +16,16 @@
 
       <nav class="containerNav">
         <button class="close">X</button>
-        <div><img src="./img/logoBranco.png" alt="#"></div>
+        <div><img src="./img/logoBranco.svg" alt="#"></div>
         <h2>Dashboard</h2>
         <ul class="lista_menu_geral">
-
+          <li><a href="./gestorDash.html">Home</a></li>
+          <li><a onclick="abrirModal()">Cadastrar funcionário</a></li>
           <li><a href="./gestorDash.html">Sair</a></li>
-
         </ul>
       </nav>
     </div>
+
     <section class="containerInfo">
       <div class="cabecalho">
         <a class="mphone" href="#">
@@ -45,27 +46,19 @@
 
             </div>
           </div>
-
         </div>
-
 
       </div>
       <div class="gdb">
         <div class="hello">
-
           <h3>
             <p> Equipamentos Equipe:
             </p>
-
           </h3>
           <button id="criarq">Adicionar Equipamento</button>
         </div>
         <br>
-
-
-
       </div>
-
     </section>
   </section>
 
@@ -81,7 +74,7 @@
   </div>
 
   <div class="createEqp" id="modalCriar">
-    <a id="closeq" href="">X</a>
+    <a id="closeq" href="" class="fecharCreate">X</a>
     <form id="formulario_login">
       <input type="text" placeholder="NumeroSerie" name="numeroSerie" value="38F6_0156_3053_9014.">
       <input type="text" placeholder="CPU" name="CPU" value="Intel(R) Core(TM) i7-10610U CPU @ 1.80GHz">
@@ -97,6 +90,52 @@
       <input id="adad" type="button" value="Registrar" onclick="registrarMaquina(event)">
     </form>
   </div>
+
+  <section id="abrirModalCadastro" class="fundoIns" style="display: none;">
+    <div class="modalCadastro ativo">
+      <a href="#fecharCom" class="fecharIns" onclick="fecharInstrucao()">x</a>
+      <h1>Cadastrar funcionário:</h1>
+
+      <form id="form_cadastro_func" method="post" onsubmit="return cadastrar()" class="formCadastro">
+        <div id="dadosEmpresa" class="formAcess">
+          <h3>Dado do funcionário:</h3>
+          <div class="espaco"></div>
+          <label class="input-fild">
+            <span>Name:</span>
+            <input type="text" id="nomeFuncionario" name="nomeFuncionario" class="input-padrao"
+              placeholder="Nome e sobrenome" required minlength="4" autofocus="autofocus">
+            <div class="underline"></div>
+          </label>
+          <label class="input-fild">
+            <span>Telefone:</span>
+            <input type="text" id="telefone" name="telefone" class="input-padrao" placeholder="telefone" required
+              minlength="4" autofocus="autofocus">
+            <div class="underline"></div>
+          </label>
+          <label class="input-fild">
+            <span>Email:</span>
+            <input type="text" id="email" name="email" placeholder="Digite o e-mail">
+            <div class="underline"></div>
+          </label>
+          <label class="input-fild">
+            <span>Login:</span>
+            <input type="text" id="loginFuncionario" name="loginFuncionario" placeholder="Digite o login">
+            <div class="underline"></div>
+          </label>
+
+          <label class="input-fild">
+            <span>Senha:</span>
+            <input type="text" id="senhaFuncionario" name="senhaFuncionario" placeholder="senhaResponsavel">
+            <div class="underline"></div>
+          </label>
+          <button type="submit" id="btn_entrar" value="Cadastrar" class="cadastrar">
+            Cadastrar
+            <img src="../img/salvar.png" alt="">
+        </button>
+      </form>
+
+     
+  </section>
 
 </body>
 <script src="../DashSup/tempo.js"></script>
@@ -118,6 +157,7 @@
     });
     return false;
   }
+
   function pegaHora() {
     const datainput = document.querySelector("#data");
     datainput.value = moment().format();
@@ -127,6 +167,7 @@
   /* --------------- */
   let armazenadorEquipe = [];
   let controler = 0;
+
   function pegarDados(event) {
     const maqres = document.querySelector(".maqres");
     const maqid = document.querySelector(".maqid");
@@ -160,6 +201,7 @@
         </div>`;
     });
   }
+
   function disponivel(dados) {
     const seletor = document.querySelector("#fkFuncionario");
     const seletor2 = document.querySelector("#fkFuncionario2");
@@ -193,7 +235,7 @@
       } else {
         alert("[UPDATE] : Dados Atualizados !");
 
-        resposta.text().then((texto) => { });
+        resposta.text().then((texto) => {});
       }
     });
     return false;
@@ -215,6 +257,7 @@
         console.error(`Erro na obtenção das publicações do usuário: ${error.message}`);
       });
   }
+
   function obterUsuarioDisponivel(idUsuario) {
     fetch(`/gestor/disponivel/${idUsuario}`)
       .then(resposta => {
@@ -236,7 +279,6 @@
   const idGest = +sessionStorage.id;
   obterPublicacoesPorUsuario(idGest);
   obterUsuarioDisponivel(idGest);
-
 </script>
 <script>
   function attNome() {
@@ -268,6 +310,35 @@
     addEvent()
   }, 100);
 
+
+  abrirModalCadastro.classList.add("abrir")
+
+  function fecharInstrucao() {
+    abrirModalCadastro.style.display = 'none'
+  }
+
+  function abrirModal() {
+    abrirModalCadastro.style.display = 'block'
+  }
+
+  function cadastrar() {
+    var idUsuario = sessionStorage.id;
+    var formulario = new URLSearchParams(new FormData(form_cadastro_func));
+    fetch(`/gestor/cadastrarfuncionario/${idUsuario}`, {
+        method: "POST",
+        body: formulario
+    }).then(function (response) {
+        if (response.ok) {
+            alert("[Sucesso:] Cadastrado Realizado !")
+            /* window.location.href = "./listaEmpresas.html"; */
+        } else {
+            alert("[ERROR:] OPS! Esse Login Já existe no nosso banco de dados :p")
+            console.log('Erro de cadastro!');
+        }
+    });
+    return false;
+
+}
 </script>
 
 </html>

@@ -7,24 +7,24 @@ https://codewithhugo.com/sequelize-data-types-a-practical-guide/
 
 module.exports = (sequelize, DataTypes) => {
     let Funcionario = sequelize.define('Funcionario', {
-        idResponsavel: {
-            field: 'idResponsavel',
+        idFuncionario: {
+            field: 'idFuncionario',
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true
         },
-        CPF: {
-            field: 'CPF',
+        email: {
+            field: 'email',
             type: DataTypes.STRING,
             allowNull: false
         },
-        loginResponsavel: {
-            field: 'loginResponsavel',
+        loginFuncionario: {
+            field: 'loginFuncionario',
             type: DataTypes.STRING,
             allowNull: false
         },
-        senhaResponsavel: {
-            field: 'senhaResponsavel',
+        senhaFuncionario: {
+            field: 'senhaFuncionario',
             type: DataTypes.STRING,
             allowNull: false
         },
@@ -33,23 +33,18 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false
         },
-        nomeResponsavel: {
-            field: 'nomeResponsavel',
+        nomeFuncionario: {
+            field: 'nomeFuncionario',
             type: DataTypes.STRING,
             allowNull: false
         },
-        fkEmpresa: {
-            field: 'fkEmpresa',
+        fkResponsavel: {
+            field: 'fkResponsavel',
             type: DataTypes.INTEGER,
             allowNull: false
         },
-        tipo: {
-            field: 'tipo',
-            type: DataTypes.STRING,
-            allowNull: false
-        }
     }, {
-        tableName: 'responsavel',
+        tableName: 'funcionario',
         freezeTableName: true,
         underscored: true,
         timestamps: false,
