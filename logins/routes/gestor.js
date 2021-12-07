@@ -2,12 +2,13 @@ var express = require('express');
 var router = express.Router();
 var sequelize = require('../models').sequelize;
 var Gestao = require('../models').Gestao;
+var Funcionario = require('../models').Funcionario;
 var Publicacao = require('../models').Publicacao;
 var Empresa = require('../models').Empresa;
 var Equipamento = require('../models').Equipamento;
 
 
-/* ROTA PARA CADASTRAR FUNCIONARIO */
+/* ROTA PARA CADASTRAR RESPONSAVEL */
 
 router.post("/cadastrarresponsavel/:idUsuario", function (req, res, next) {
     let idUsuario = req.params.idUsuario;
@@ -19,6 +20,26 @@ router.post("/cadastrarresponsavel/:idUsuario", function (req, res, next) {
         nomeResponsavel: req.body.nomeResponsavel,
         tipo: req.body.tipo,
         fkEmpresa: idUsuario,
+    }).then(resultado => {
+        console.log(`Registro criado: ${resultado}`)
+        res.send(resultado);
+    }).catch(erro => {
+        console.error(erro);
+        res.status(500).send(erro.message);
+    });
+});
+
+/* ROTA PARA CADASTRAR FUNCIONARIO Empresa*/
+
+router.post("/cadastrarfuncionario/:idUsuario", function (req, res, next) {
+    let idUsuario = req.params.idUsuario;
+    Funcionario.create({
+        email: req.body.email,
+        loginFuncionario: req.body.loginFuncionario,
+        senhaFuncionario: req.body.senhaFuncionario,
+        telefone: req.body.telefone,
+        nomeFuncionario: req.body.nomeFuncionario,
+        fkResponsavel: idUsuario,
     }).then(resultado => {
         console.log(`Registro criado: ${resultado}`)
         res.send(resultado);

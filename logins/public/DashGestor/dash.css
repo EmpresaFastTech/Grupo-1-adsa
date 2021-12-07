@@ -1141,3 +1141,10 @@ button img {
   width: 100%;
   border-radius: 10px;
 }
+
+.cadastrar:hover{
+  background: linear-gradient(to left, #5879FA, #8e54e9);
+    background: linear-gradient(to left, #5879FA, #8e54e9);
+    cursor: pointer;
+    color: white;
+}
