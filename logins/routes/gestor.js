@@ -141,10 +141,10 @@ router.post('/cadastrar', function (req, res, next) {
 /* -------------------------- */
 router.put('/updateeq', function (req, res, next) {
     var fkFuncionario = req.body.fkFuncionario;
-    var funcionarioAntigo = req.body.idFuncionario;
+    var maquina = req.body.idFuncionario;
     let instrucaoSql;
 
-    instrucaoSql = `update [dbo].[Equipamento] set fkFuncionario = ${fkFuncionario} where fkFuncionario=${funcionarioAntigo}`;
+    instrucaoSql = `update [dbo].[Equipamento] set fkFuncionario = ${fkFuncionario} where idEquipamento = ${maquina};`;
 
     sequelize.query(instrucaoSql, {
         model: Equipamento
