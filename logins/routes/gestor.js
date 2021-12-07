@@ -184,6 +184,26 @@ router.delete('/delete/:idUsuario', function (req, res, next) {
             res.status(500).send(erro.message);
         });
 });
+/* ROTA DELETAR maquina */
+router.delete('/deletemaquina/:idUsuario', function (req, res, next) {
+    console.log('Recuperando todas as publicações');
+
+    var idUsuario = req.params.idUsuario;
+
+    let instrucaoSql = `DELETE FROM [dbo].[Equipamento] WHERE idEquipamento = ${idUsuario}`;
+
+    sequelize.query(instrucaoSql, {
+            model: Equipamento,
+            mapToModel: true
+        })
+        .then(resultado => {
+            console.log(`Encontrados: ${resultado.length}`);
+            res.json(resultado);
+        }).catch(erro => {
+            console.error(erro);
+            res.status(500).send(erro.message);
+        });
+});
 /* ROTA DELETAR GESTOR */
 router.delete('/deletegest/:idUsuario', function (req, res, next) {
     console.log('Recuperando todas as publicações');

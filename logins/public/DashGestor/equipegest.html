@@ -168,7 +168,31 @@
   /* --------------- */
   let armazenadorEquipe = [];
   let controler = 0;
+  function pegarDadosEquipamentox(event) {
+    event.preventDefault();
+    deleteEquipamento(armazenadorEquipamento[event.target.alt].maquina);
+  }
+  function deleteEquipamento(idUsuario) {
+    fetch(`/gestor/deletemaquina/${idUsuario}`, {
+      method: "DELETE"
+    })
+      .then(resposta => {
+        if (resposta.ok) {
+          resposta.json().then(function (resposta) {
 
+            alert("deletado!");
+            location.reload();
+            // alert(JSON.stringify(resposta))
+          });
+        } else {
+
+          console.error('Nenhum dado encontrado ou erro na API');
+        }
+      })
+      .catch(function (error) {
+        console.error(`Erro na obtenção das publicações do usuário: ${error.message}`);
+      });
+  }
   function pegarDados(event) {
     const maqres = document.querySelector(".maqres");
     const maqid = document.querySelector(".maqid");
@@ -197,7 +221,7 @@
       container.innerHTML += `
       <div class="dashinfoControle">
           <h3>
-            <p> <span> ${dado.nomeFuncionario}:  </span> Maquina:<span>${dado.idEquipamento}</span>SO: <span>${dado.SO}</span> RAM: <span>${dado.RAM}</span> HD: <span>${dado.HD}</span> <img id="editarq" src="../cadastro/img/iconEditarPreto.png" alt="${contador}">
+            <p> <span> ${dado.nomeFuncionario}:  </span> Maquina:<span>${dado.idEquipamento}</span>SO: <span>${dado.SO}</span> RAM: <span>${dado.RAM}</span> HD: <span>${dado.HD}</span> <img id="editarq" src="../cadastro/img/iconEditarPreto.png" alt="${contador}"></span> <img id="lixinho" src="../cadastro/img/excluir.png" alt="${contador}">
              
             </p>
           </h3>
@@ -303,6 +327,7 @@
   setInterval(() => {
     function addEvent() {
       const editarq = document.querySelectorAll("#editarq");
+      const lixinho = document.querySelectorAll("#lixinho");
       const modal = document.querySelectorAll("#modalCriar");
       const criarq = document.querySelector("#criarq");
       const updateEqp = document.querySelector(".updateEqp");
@@ -314,6 +339,9 @@
           pegarDados(event)
         })
       });
+      lixinho.forEach((lixo) => {
+        lixo.addEventListener("click", pegarDadosEquipamentox);
+      })
       closeq.addEventListener("click", () => {
         modal.classList.add("close")
       })
