@@ -131,7 +131,7 @@ main{
 }
 
 .containerList img {
-  margin-left: 70px;
+  margin-left: 120px;
   padding: 0;
   height: 35px;
   float: left;
@@ -187,6 +187,7 @@ h4 span {
   min-height: 82vh;
   background-color: #fffffff6;
   border-radius: 5px;
+  margin-top: 20px;
 }
 
 .container {

@@ -15,7 +15,7 @@
     <div class="container">
       <div>
         <img src="../img/procastinatorPreto.png" alt="" />
-        <h1 class="titulo">FastTec</h1>
+        <h1 class="titulo" id="nomeEmpresa"></h1>
       </div>
       <span class="highlight"> Editar funcionário cadastrado</span>
       <a href="listaFuncionarios.html"> <img src="../img/voltarRoxo.png" alt=""></a>
@@ -57,7 +57,7 @@
 
     <div class="botnsFuncoes">
 
-      <a href="cadastro.html">
+      <a href="cadastroFuncionarios.html">
         <img src="../img/iconMaisEscuro.png" alt="" />
       </a>
       <span>Novo</span>
@@ -67,7 +67,7 @@
       </a>
       <span>Salvar</span>
 
-      <a href="listaEmpresas.html">
+      <a href="listaFuncionarios.html">
         <img src="../img/cancelar.png" alt="" />
       </a>
       <span>Cancelar</span>
@@ -79,7 +79,7 @@
 </html>
 
 <script>
-
+document.getElementById('nomeEmpresa').innerHTML = sessionStorage.nomeEmpresa;
   function preencher() {
     let nome = document.getElementById('nomeResponsavel');
     let CPF = document.getElementById('CPF');
