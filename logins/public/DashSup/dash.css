@@ -36,7 +36,6 @@ ul {
   list-style: none !important;
 }
 
-
 /* container */
 
 .containerDash {
@@ -48,8 +47,8 @@ ul {
   display: grid;
   grid-template-columns: 230px 1fr;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.26);
-
 }
+
 .cabecalho .voltar{
   height:35px;
   width: 35px;
@@ -57,7 +56,6 @@ ul {
   top: 4rem;
   padding: 0px;
 }
-
 
 /* menu */
 
