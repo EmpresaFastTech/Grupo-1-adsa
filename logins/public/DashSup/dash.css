@@ -232,7 +232,7 @@ ul {
   transform: rotate(360deg);
 }
 
-.gestorPerfil h4::after {
+/* .gestorPerfil h4::after {
   content: '';
   width: 10px;
   height: 10px;
@@ -243,7 +243,7 @@ ul {
   margin-left: 5px;
   transform: rotate(272deg);
   transition: transform .3s;
-}
+} */
 
 .gestorPerfil h4 {
   color: #333;
