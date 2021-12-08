@@ -131,7 +131,7 @@ main{
 }
 
 .containerList img {
-  margin-left: 50px;
+  margin-left: 70px;
   padding: 0;
   height: 35px;
   float: left;
@@ -363,11 +363,11 @@ form input[type="submit"]:hover {
   align-items: center;
 }
 .btnExcluir{
-  background-image: url("../img/excluir.png");
+  background-image: url("../img/excluirCinza.png");
   background-repeat: no-repeat;
   background-size: cover;
-  height: 36px;
+  height: 42px;
   width: 36px;
   text-indent: -9999px;
-  margin-left: 2px;
+  margin-left: 3px;
 }
